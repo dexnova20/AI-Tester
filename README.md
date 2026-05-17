@@ -1,114 +1,128 @@
-# 🧛 DRACULA 
-
-> **Autonomous AI QA, Debugging, and Security Testing Platform MVP.**
-> An extremely robust, cinematic testing suite designed to capture website visuals and review GitHub repositories autonomously.
+# DRACULA
+### Autonomous AI QA, Debugging & Security Testing Platform
 
 ---
 
-## ⚡ Key Features
+## What it does
 
-*   **Website Testing Flow**: Input a target URL; the backend launches **Playwright**, opens the page, waits for network idle, captures a full-page screenshot, and runs simulated AI analysis for bugs and rate-limiting issues.
-*   **GitHub Repository Analysis**: Simulates a containerized clone and build environment, generating detailed runtime terminal logs and diagnosing potential project configuration failures.
-*   **Self-Healing Playwright Core**: Automatically detects if Chromium binaries are missing on the host system and installs them cleanly at runtime to prevent crashes.
-*   **Intelligent Network Shields**: Integrated `/health` checkers verify the status of the server. If the backend goes offline, the UI intercepts and presents step-by-step diagnostic actions rather than silent network crashes.
-*   **Pre-Flight Diagnostics**: Dedicated powershell startup script ensures dependencies are in order and checks for port collisions (ports `3000` & `8000`) before running.
-
----
-
-## 🛠️ Technology Stack
-
-*   **Frontend**: Next.js 14 (Stable), React 18, Tailwind CSS v4, TypeScript
-*   **Backend**: FastAPI, Playwright (Headless Chromium Automation), Python-Dotenv, Uvicorn
+- **Website Scanner** — Input any URL, DRACULA launches a headless Chromium browser, crawls up to 3 pages, captures screenshots, detects accessibility/security/UI issues and generates an AI audit report.
+- **GitHub Repo Analyzer** — Simulates a clone and build environment, diagnoses configuration failures and generates a detailed findings report.
+- **Self-Healing Browser** — Automatically installs Playwright Chromium binaries if missing on the host machine.
+- **Live Scan Console** — Real-time terminal log stream, score gauges, screenshot gallery and findings panel update as the scan runs.
 
 ---
 
-## 🚀 Getting Started
+## Tech Stack
 
-Ensure you have **Node.js** (v18 or newer) and **Python** (3.9 - 3.12) installed on your system.
-
-### 📋 Phase 1: Environment Configuration
-
-DRACULA utilizes custom environment variables. Configure them by copying the templates:
-
-1.  **Frontend Setup**:
-    Copy `frontend/.env.example` to `frontend/.env.local`:
-    ```bash
-    # frontend/.env.local
-    NEXT_PUBLIC_API_URL=http://localhost:8000
-    ```
-2.  **Backend Setup**:
-    Copy `backend/.env.example` to `backend/.env`:
-    ```bash
-    # backend/.env
-    HOST=127.0.0.1
-    PORT=8000
-    CORS_ORIGINS=http://localhost:3000
-    ```
+| Layer | Technology |
+|---|---|
+| Frontend | Next.js 14, React 18, Tailwind CSS v4, TypeScript |
+| Backend | FastAPI, Uvicorn, Playwright (Headless Chromium), Python-Dotenv |
 
 ---
 
-### 📦 Phase 2: Installing Dependencies
+## Prerequisites
 
-Ensure both frontend and backend packages are loaded:
+Install these two tools on your machine before anything else:
 
-*   **Frontend Setup**:
-    ```bash
-    cd frontend
-    npm install
-    ```
-*   **Backend Setup**:
-    ```bash
-    cd backend
-    python -m venv venv
-    
-    # On Windows:
-    .\venv\Scripts\Activate.ps1
-    # On Unix/macOS:
-    source venv/bin/activate
-    
-    pip install -r requirements.txt
-    ```
+- [Python 3.10+](https://python.org/downloads) — make sure to check **"Add Python to PATH"** during install
+- [Node.js 18+](https://nodejs.org)
 
 ---
 
-### 🏁 Phase 3: Launching the App
+## Quick Start (One Command)
 
-#### Option A: The Easy Way (With Pre-Flight Diagnostics)
-From the root workspace folder, open PowerShell and run:
+**1. Clone the repo**
 ```powershell
-.\start.ps1
+git clone https://github.com/<your-username>/<your-repo>.git
+cd <your-repo>
 ```
-This script will test if your environments are set up correctly, check if ports `3000` or `8000` are blocked, and launch both dev servers concurrently!
 
-*   **Frontend**: [http://localhost:3000](http://localhost:3000)
-*   **Backend API**: [http://localhost:8000](http://localhost:8000)
-*   **Interactive API Docs (Swagger)**: [http://localhost:8000/docs](http://localhost:8000/docs)
+**2. Run the start script**
+```powershell
+powershell -ExecutionPolicy Bypass -File start.ps1
+```
 
-#### Option B: Manual Execution
-*   **Start Backend**:
-    ```bash
-    cd backend
-    # Activate virtual environment
-    .\venv\Scripts\Activate.ps1
-    uvicorn main:app --reload --port 8000
-    ```
-*   **Start Frontend**:
-    ```bash
-    cd frontend
-    npm run dev
-    ```
+That's it. The script will automatically:
+- Detect and validate Python and Node.js
+- Create a Python virtual environment
+- Install all backend dependencies (`requirements.txt`)
+- Install Playwright Chromium browser
+- Install all frontend dependencies (`node_modules`)
+- Check ports 3000 and 8000 are free
+- Launch both servers and stream logs to the terminal
+
+**3. Open the app**
+
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000
+- API Docs (Swagger): http://localhost:8000/docs
+
+Press `Ctrl+C` to stop both servers.
 
 ---
 
-## 🛠️ Troubleshooting & Debugging
+## Environment Variables
 
-*   **Port Collision Errors**: If the start script alerts you that Port `3000` or `8000` is blocked, a previously crashed server instance may still be active. You can kill the active process using:
-    ```powershell
-    # Windows PowerShell:
-    Stop-Process -Id (Get-NetTCPConnection -LocalPort 8000).OwningProcess -Force
-    ```
-*   **Missing Playwright Browsers**: If you are running manual mode and Playwright complains about missing binaries, activate the virtual environment and run:
-    ```bash
-    playwright install chromium
-    ```
-    *(Note: DRACULA's self-healing backend will also automatically download this if it experiences a launch failure!)*
+The backend reads from `backend/.env`. Copy the example file on first run:
+
+```powershell
+copy backend\.env.example backend\.env
+```
+
+Default values work out of the box for local development:
+```
+HOST=127.0.0.1
+PORT=8000
+CORS_ORIGINS=http://localhost:3000
+```
+
+---
+
+## Manual Start (Alternative)
+
+If you prefer to run servers separately, open two terminals:
+
+**Terminal 1 — Backend**
+```powershell
+cd backend
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python -m playwright install chromium
+python -m uvicorn main:app --reload
+```
+
+**Terminal 2 — Frontend**
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+## Troubleshooting
+
+**Port already in use**
+```powershell
+# Kill whatever is on port 8000
+Stop-Process -Id (Get-NetTCPConnection -LocalPort 8000).OwningProcess -Force
+# Kill whatever is on port 3000
+Stop-Process -Id (Get-NetTCPConnection -LocalPort 3000).OwningProcess -Force
+```
+
+**`pip` / `uvicorn` fatal launcher error**
+
+This happens when the venv path contains spaces. Use `python -m` prefix instead:
+```powershell
+python -m pip install -r requirements.txt
+python -m uvicorn main:app --reload
+```
+The `start.ps1` script handles this automatically.
+
+**Playwright Chromium missing**
+```powershell
+cd backend
+.\venv\Scripts\python.exe -m playwright install chromium
+```

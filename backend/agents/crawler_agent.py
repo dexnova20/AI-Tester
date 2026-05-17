@@ -103,7 +103,7 @@ async def crawl_and_explore(url: str, scan_id: str):
                 await asyncio.sleep(0.8) # cinematic delay
                 
                 try:
-                    await page.goto(current_url, wait_until="load", timeout=15000)
+                    await page.goto(current_url, wait_until="domcontentloaded", timeout=20000)
                     log_message(scan_id, f"[CRAWLER] Page loaded successfully: {route_path}")
                     
                     # Capture route screenshot

@@ -47,7 +47,7 @@ async def capture_screenshot(url: str, scan_id: str) -> str:
             
             # Simulate a real user waiting for network idle
             print(f"[PLAYWRIGHT] Navigating to: {url}")
-            await page.goto(url, wait_until="networkidle", timeout=30000)
+            await page.goto(url, wait_until="domcontentloaded", timeout=20000)
             
             # Capture screenshot
             print(f"[PLAYWRIGHT] Capturing full-page screenshot to: {screenshot_path}")

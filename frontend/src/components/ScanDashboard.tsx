@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import StatusBadge from "./StatusBadge";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
 interface ScanDashboardProps {
   data: any;
 }
@@ -248,12 +250,12 @@ export default function ScanDashboard({ data }: ScanDashboardProps) {
                 {gallery.map((img: any, idx: number) => (
                   <div 
                     key={idx} 
-                    onClick={() => setSelectedImg(`http://localhost:8000${img.path}`)}
+                    onClick={() => setSelectedImg(`${API_URL}${img.path}`)}
                     className="border border-gray-900 rounded-lg overflow-hidden group cursor-pointer hover:border-red-600/30 transition duration-300 relative"
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img 
-                      src={`http://localhost:8000${img.path}`} 
+                      src={`${API_URL}${img.path}`} 
                       alt={`Route: ${img.route}`} 
                       className="w-full h-28 object-cover object-top transition duration-500 group-hover:scale-105"
                     />

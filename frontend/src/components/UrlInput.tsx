@@ -10,7 +10,9 @@ export default function UrlInput({ onSubmit, isLoading }: UrlInputProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (url) onSubmit(url);
+    if (!url) return;
+    const normalized = /^https?:\/\//i.test(url) ? url : `https://${url}`;
+    onSubmit(normalized);
   };
 
   return (
@@ -20,7 +22,7 @@ export default function UrlInput({ onSubmit, isLoading }: UrlInputProps) {
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
         </div>
         <input
-          type="url"
+          type="text"
           required
           placeholder="https://example.com"
           className="flex-1 bg-transparent px-4 py-3 text-white placeholder-gray-500 outline-none font-mono"
