@@ -102,6 +102,78 @@ npm run dev
 
 ---
 
+## Mac / Linux Users
+
+### Prerequisites
+- [Python 3.10+](https://python.org/downloads)
+- [Node.js 18+](https://nodejs.org)
+
+### Step 1 — Clone the repo
+```bash
+git clone https://github.com/<your-username>/<your-repo>.git
+cd <your-repo>
+```
+
+### Step 2 — Setup and start backend
+```bash
+cd backend
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+playwright install chromium
+uvicorn main:app --reload
+```
+Backend is ready when you see: `Uvicorn running on http://127.0.0.1:8000`
+
+### Step 3 — Start frontend (new terminal)
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Frontend is ready when you see: `Local: http://localhost:3000`
+
+### Step 4 — Open the app
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000
+- API Docs: http://localhost:8000/docs
+
+Press `Ctrl+C` in each terminal to stop the servers.
+
+### Environment Variables (Mac)
+```bash
+cp backend/.env.example backend/.env
+```
+
+### Troubleshooting (Mac)
+
+**Port already in use**
+```bash
+# Kill port 8000
+lsof -ti:8000 | xargs kill -9
+# Kill port 3000
+lsof -ti:3000 | xargs kill -9
+```
+
+**`python3` not found**
+```bash
+brew install python
+```
+
+**`node` not found**
+```bash
+brew install node
+```
+
+**Playwright Chromium missing**
+```bash
+cd backend
+source venv/bin/activate
+playwright install chromium
+```
+
+---
+
 ## Troubleshooting
 
 **Port already in use**
