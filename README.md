@@ -1,4 +1,4 @@
-# 🧛 DRACULA ai
+# 🧛 DRACULA 
 
 > **Autonomous AI QA, Debugging, and Security Testing Platform MVP.**
 > An extremely robust, cinematic testing suite designed to capture website visuals and review GitHub repositories autonomously.
