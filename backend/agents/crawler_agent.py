@@ -4,20 +4,26 @@ import time
 import asyncio
 from urllib.parse import urlparse, urljoin
 from playwright.async_api import async_playwright
-from utils.in_memory_db import scan_results
+from services.storage_service import StorageService
 
 def log_message(scan_id: str, message: str):
-    if scan_id not in scan_results:
-        scan_results[scan_id] = {}
-    if "logs" not in scan_results[scan_id]:
-        scan_results[scan_id]["logs"] = []
-    
     timestamp = time.strftime("%H:%M:%S")
     formatted = f"[{timestamp}] {message}"
-    scan_results[scan_id]["logs"].append(formatted)
+    
+    # Write to storage service
+    current_result = StorageService.get_scan_result(scan_id) or {"logs": []}
+    if "logs" not in current_result:
+        current_result["logs"] = []
+    current_result["logs"].append(formatted)
+    StorageService.save_scan_result(scan_id, current_result)
     print(formatted)
 
 async def crawl_and_explore(url: str, scan_id: str):
+    """
+    Upgraded autonomous web crawler.
+    Explores routes up to depth 2, visits at most 3 same-origin pages,
+    enforces 45s hard limit, and records DOM components, logs, and screenshots.
+    """
     MAX_PAGES = 3
     MAX_DEPTH = 2
     MAX_SCAN_DURATION = 45 # seconds
@@ -37,14 +43,7 @@ async def crawl_and_explore(url: str, scan_id: str):
         "suspicious_forms": 0
     }
     
-    # Initialize database collections
-    if scan_id not in scan_results:
-        scan_results[scan_id] = {}
-    scan_results[scan_id]["logs"] = []
-    scan_results[scan_id]["screenshot_gallery"] = []
-    
-    log_message(scan_id, "[AGENT] Launching autonomous crawling engine...")
-    await asyncio.sleep(0.5)
+    log_message(scan_id, "[AGENT] Initializing Playwright browser driver...")
     
     console_errors = []
     
@@ -52,11 +51,10 @@ async def crawl_and_explore(url: str, scan_id: str):
         async with async_playwright() as p:
             browser = None
             try:
-                log_message(scan_id, "[PLAYWRIGHT] Launching headless chromium driver...")
                 browser = await p.chromium.launch(headless=True)
             except Exception as launch_err:
                 log_message(scan_id, f"[PLAYWRIGHT_WARN] Chromium driver launch failed: {launch_err}")
-                log_message(scan_id, "[PLAYWRIGHT] Browser not found. Triggering automated installation...")
+                log_message(scan_id, "[PLAYWRIGHT] Triggering automated installation of chromium browser binary...")
                 
                 process = await asyncio.create_subprocess_exec(
                     sys.executable, "-m", "playwright", "install", "chromium",
@@ -74,10 +72,10 @@ async def crawl_and_explore(url: str, scan_id: str):
             )
             page = await context.new_page()
             
-            # Record console errors
+            # Record console exceptions
             page.on("console", lambda msg: console_errors.append(msg.text) if msg.type == "error" else None)
             
-            # Queue elements represent: (full_url, current_depth)
+            # Queue: (full_url, current_depth)
             queue = [(url, 0)]
             
             while queue and len(visited_routes) < MAX_PAGES:
@@ -88,7 +86,7 @@ async def crawl_and_explore(url: str, scan_id: str):
                 
                 current_url, depth = queue.pop(0)
                 
-                # Enforce domain same-origin filters
+                # Domain filters (same-origin only)
                 parsed_current = urlparse(current_url)
                 current_domain = f"{parsed_current.scheme}://{parsed_current.netloc}"
                 if current_domain != base_domain:
@@ -99,8 +97,8 @@ async def crawl_and_explore(url: str, scan_id: str):
                     continue
                 
                 visited_routes.add(route_path)
-                log_message(scan_id, f"[CRAWLER] Exploring route: {route_path} (Depth: {depth})")
-                await asyncio.sleep(0.8) # cinematic delay
+                log_message(scan_id, f"[CRAWLER] Scanning route: {route_path} (Depth: {depth})...")
+                await asyncio.sleep(0.5) # cinematic delay
                 
                 try:
                     await page.goto(current_url, wait_until="domcontentloaded", timeout=20000)
@@ -108,30 +106,36 @@ async def crawl_and_explore(url: str, scan_id: str):
                     
                     # Capture route screenshot
                     screenshot_name = f"{scan_id}_{len(visited_routes)}.png"
-                    screenshot_path = f"screenshots/{screenshot_name}"
-                    await page.screenshot(path=screenshot_path)
+                    screenshot_temp_path = f"screenshots/{screenshot_name}"
+                    
+                    # Ensure screenshots directory exists
+                    os.makedirs("screenshots", exist_ok=True)
+                    await page.screenshot(path=screenshot_temp_path)
+                    
+                    # Copy to our storage service to persist it under storage/screenshots/
+                    stored_screenshot_url = StorageService.save_screenshot_file(scan_id, screenshot_temp_path)
                     
                     screenshot_gallery.append({
-                        "path": f"/screenshots/{screenshot_name}",
+                        "path": stored_screenshot_url,
                         "route": route_path
                     })
-                    # Save intermediate gallery state dynamically so polling loads screenshot items
-                    scan_results[scan_id]["screenshot_gallery"] = screenshot_gallery
                     
-                    log_message(scan_id, f"[CRAWLER] Captured route screenshot to {screenshot_path}.")
-                    await asyncio.sleep(0.8)
+                    # Update dynamic results
+                    current_result = StorageService.get_scan_result(scan_id) or {}
+                    current_result["screenshot_gallery"] = screenshot_gallery
+                    StorageService.save_scan_result(scan_id, current_result)
                     
-                    # Run domestic element audits
-                    log_message(scan_id, f"[ANALYZER] Inspecting DOM elements on route: {route_path}")
+                    log_message(scan_id, f"[CRAWLER] Captured route screenshot to: {stored_screenshot_url}")
+                    await asyncio.sleep(0.5)
                     
-                    # 1. Inspect image alt parameters
+                    # 1. Audit image alt tags
                     images = await page.query_selector_all("img")
                     for img in images:
                         alt = await img.get_attribute("alt")
                         if not alt or alt.strip() == "":
                             discovered_elements["missing_alts"] += 1
                     
-                    # 2. Inspect form elements
+                    # 2. Audit input and form fields
                     inputs = await page.query_selector_all("input, select, textarea")
                     for inp in inputs:
                         inp_type = await inp.get_attribute("type") or "text"
@@ -142,13 +146,13 @@ async def crawl_and_explore(url: str, scan_id: str):
                             "name": inp_name
                         })
                         
-                        # Anti-CSRF / Weak Security parameters diagnostic checks
+                        # Security validation diagnostic rule checks
                         if inp_type == "password":
                             minlen = await inp.get_attribute("minlength")
                             if not minlen:
                                 discovered_elements["suspicious_forms"] += 1
                     
-                    # 3. Inspect clickables
+                    # 3. Audit clickable items
                     buttons = await page.query_selector_all("button, input[type='button'], input[type='submit']")
                     for btn in buttons:
                         btn_text = await btn.inner_text() or await btn.get_attribute("value") or ""
@@ -159,7 +163,7 @@ async def crawl_and_explore(url: str, scan_id: str):
                         if btn_text.strip() == "":
                             discovered_elements["broken_buttons"] += 1
                     
-                    # 4. Enforce depth boundary for further queues
+                    # 4. Limit queue depth extensions
                     if depth < MAX_DEPTH:
                         links = await page.query_selector_all("a")
                         for link in links:
@@ -170,8 +174,8 @@ async def crawl_and_explore(url: str, scan_id: str):
                                 if f"{parsed_link.scheme}://{parsed_link.netloc}" == base_domain:
                                     queue.append((full_link, depth + 1))
                                     discovered_elements["links"].append(full_link)
-                    
-                    # Simulate user interactions
+                                    
+                    # Simulate simple safe user text entry validation checks
                     if depth == 0 and len(buttons) > 0:
                         log_message(scan_id, "[AGENT] Simulating safe user inputs to test validation barriers...")
                         text_inputs = await page.query_selector_all("input[type='text'], input[type='email']")
@@ -179,10 +183,7 @@ async def crawl_and_explore(url: str, scan_id: str):
                             input_name = await text_inputs[0].get_attribute("name") or "login"
                             log_message(scan_id, f"[AGENT] Populating text input '{input_name}' with test payload...")
                             await text_inputs[0].fill("dracula_demo_agent@test.com")
-                            await asyncio.sleep(0.5)
-                        
-                        log_message(scan_id, f"[AGENT] Simulating safe click trigger on: '{btn_text or 'Button'}'")
-                        await asyncio.sleep(0.5)
+                            await asyncio.sleep(0.2)
                         
                 except Exception as route_err:
                     log_message(scan_id, f"[WARN] Error exploring route {route_path}: {route_err}")
@@ -193,4 +194,4 @@ async def crawl_and_explore(url: str, scan_id: str):
         log_message(scan_id, f"[ERROR] Explorer engine experienced a runtime error: {e}")
         
     log_message(scan_id, "[AGENT] Same-origin crawling and interaction stages successfully complete.")
-    return visited_routes, screenshot_gallery, discovered_elements, console_errors
+    return list(visited_routes), screenshot_gallery, discovered_elements, console_errors

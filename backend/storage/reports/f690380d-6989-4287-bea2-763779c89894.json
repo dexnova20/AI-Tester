@@ -1,0 +1,113 @@
+{
+  "scan_id": "f690380d-6989-4287-bea2-763779c89894",
+  "status": "completed",
+  "repo_url": "https://github.com/dexnova20/DRACULA",
+  "is_repository": true,
+  "screenshot": "/screenshots/default.png",
+  "screenshot_gallery": [],
+  "logs": [
+    "Establishing telemetry sockets...",
+    "Awaiting execution threads...",
+    "[22:40:08] [PLANNER] Master Orchestrator activated for Repo target: https://github.com/dexnova20/DRACULA",
+    "[22:40:08] [PLANNER] Formulating repository analysis checklist...",
+    "[22:40:09] [REPO_AGENT] Initializing GitHub MCP repository link for https://github.com/dexnova20/DRACULA...",
+    "[22:40:09] [REPO_AGENT] Active local workspace detected at: C:\\Users\\mshas\\OneDrive\\Desktop\\New folder\\DRACULA\\backend",
+    "[22:40:09] [REPO_AGENT] Scanning files, folders, and directory blueprints...",
+    "[22:40:10] [REPO_AGENT] Repository scan finished. Discovered 41 files.",
+    "[22:40:10] [REPO_AGENT] Codebase framework classification: FastAPI",
+    "[22:40:10] [REPO_AGENT] Quality Warning: Missing documentation README.md: The project lacks onboarding and startup guidelines. (Severity: Medium)",
+    "[22:40:10] [REPO_AGENT] Quality Warning: Lacks isolated build parameters: Missing Dockerfile or docker-compose setup. (Severity: Medium)",
+    "[22:40:10] [REPO_AGENT] Completed analysis. Weighted repository score calculated at 62%:",
+    "[22:40:10]   - Documentation (README) Score: 30/100",
+    "[22:40:10]   - Project Structure Score: 50/100",
+    "[22:40:10]   - Dependency Health Score: 95/100",
+    "[22:40:10]   - Codebase Risk Score: 76/100",
+    "[22:40:10] [PLANNER] Invoking Google Gemini service to synthesize codebase recommendations...",
+    "[22:40:10] [PLANNER] Dispatching Reporting Agent to package repository report...",
+    "[22:40:10] [REPORTING_AGENT] Gathering diagnostic reports and packaging metrics...",
+    "[22:40:10] [REPORTING_AGENT] Unified DRACULA reliability report successfully generated. Scan ID: f690380d-6989-4287-bea2-763779c89894",
+    "[22:40:11] [PLANNER] Master Orchestration pipeline fully completed."
+  ],
+  "scores": {
+    "repository": 62,
+    "security": 76,
+    "accessibility": 30,
+    "ui_stability": 50,
+    "overall": 58
+  },
+  "findings": [
+    {
+      "category": "Repository Structure",
+      "issue": "Missing documentation README.md: The project lacks onboarding and startup guidelines.",
+      "severity": "Medium",
+      "suggested_fix": "Create a README.md file at the repository root and document features and deployment guides."
+    },
+    {
+      "category": "Repository Structure",
+      "issue": "Lacks isolated build parameters: Missing Dockerfile or docker-compose setup.",
+      "severity": "Medium",
+      "suggested_fix": "Create a multi-stage Dockerfile to guarantee clean containerized execution builds."
+    }
+  ],
+  "bugs_found": 0,
+  "security_issues": 0,
+  "ui_issues": 0,
+  "benchmarks": {
+    "repository": {
+      "score": 62,
+      "industry_average": 80,
+      "difference": -18,
+      "formatted_diff": "-18"
+    },
+    "security": {
+      "score": 76,
+      "industry_average": 72,
+      "difference": 4,
+      "formatted_diff": "+4"
+    },
+    "accessibility": {
+      "score": 30,
+      "industry_average": 78,
+      "difference": -48,
+      "formatted_diff": "-48"
+    },
+    "ui_stability": {
+      "score": 50,
+      "industry_average": 82,
+      "difference": -32,
+      "formatted_diff": "-32"
+    }
+  },
+  "trends": {
+    "has_history": false,
+    "overall_change": 0,
+    "previous_overall_score": null,
+    "score_deltas": {}
+  },
+  "executive_summary": {
+    "risk_level": "High",
+    "most_critical_issue": "Missing documentation README.md: The project lacks onboarding and startup guidelines.",
+    "health_score": "58/100",
+    "what_will_break_first": "Production CI/CD Deploy pipeline or Dependency resolution layer",
+    "comparative_health": "Below Industry Average"
+  },
+  "analysis": {
+    "summary": "DRACULA AI deep-analyzed repository https://github.com/dexnova20/DRACULA. The overall architectural health score is calculated at 80/100. We observed mild to severe package risks, with repository safety score landing at 62%. Key concerns center on structural layout configurations and README documentation completeness.",
+    "suggested_fix": "Restructure project files, upgrade lockfile versions, and document framework scripts explicitly inside the repository README.",
+    "details": [
+      "Overall security analysis completed at 76%",
+      "UI/UX stability metrics evaluated at 50%",
+      "Core accessibility score established at 30%",
+      "Predicted system breakdown point: Production CI/CD Deploy pipeline or Dependency resolution layer"
+    ],
+    "predicted_risk_level": "High",
+    "what_will_break_first": {
+      "most_likely_failure_point": "Production CI/CD Deploy pipeline or Dependency resolution layer",
+      "reason": "Dependency version mismatch detected or legacy vulnerabilities in packages (Repository health rated 62%).",
+      "risk_level": "High",
+      "recommendation": "Run npm audit fix or lock lockfiles explicitly, and restructure the README.md to list build instructions."
+    },
+    "root_cause_analysis": "Codebases with unstructured readme setups and legacy packages frequently suffer from dependency divergence and low developer onboarding velocity.",
+    "severity_analysis": "The codebase presents low overall risk but contains several unmitigated security headers and warning-level project files."
+  }
+}

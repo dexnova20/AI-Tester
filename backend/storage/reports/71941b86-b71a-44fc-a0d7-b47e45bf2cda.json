@@ -1,0 +1,147 @@
+{
+  "scan_id": "71941b86-b71a-44fc-a0d7-b47e45bf2cda",
+  "status": "completed",
+  "url": "https://example.com",
+  "is_repository": false,
+  "screenshot": "/screenshots/default.png",
+  "screenshot_gallery": [],
+  "logs": [
+    "Establishing telemetry sockets...",
+    "Awaiting execution threads...",
+    "[22:34:02] [PLANNER] Master Orchestrator activated for URL target: https://example.com",
+    "[22:34:02] [PLANNER] Analyzing framework markers and creating custom verification blueprint...",
+    "[22:34:03] [AGENT] Initializing Playwright browser driver...",
+    "[22:34:04] [CRAWLER] Scanning route: / (Depth: 0)...",
+    "[22:34:24] [WARN] Error exploring route /: Timeout 20000ms exceeded.",
+    "[22:34:25] [AGENT] Same-origin crawling and interaction stages successfully complete.",
+    "[22:34:25] [PLANNER] Crawling phase complete. Instantiating concurrent audit agents...",
+    "[22:34:25] [SECURITY_AGENT] Commencing security compliance checks...",
+    "[22:34:25] [ACCESSIBILITY_AGENT] Starting WCAG compliance and page landmarks audits...",
+    "[22:34:25] [PERFORMANCE_AGENT] Analyzing loading times and resource transfer payloads...",
+    "[22:34:25] [PERFORMANCE_AGENT] Finding: High loading speed latency: The page took 22.42 seconds to render.",
+    "[22:34:25] [PERFORMANCE_AGENT] Finding: Heavy bundle size payload: Transfer volume estimated at 3.60 MB.",
+    "[22:34:25] [PERFORMANCE_AGENT] Performance score compiled at 70%.",
+    "[22:34:25] [ACCESSIBILITY_AGENT] Audits complete. Accessibility score set at 100%.",
+    "[22:34:25] [SECURITY_AGENT] Audits complete. Raw security grade computed at 100%.",
+    "[22:34:25] [PLANNER] Specialized agent audits complete. Consolidating metrics...",
+    "[22:34:25] [PLANNER] Invoking Google Gemini service to generate executive verdict & failure predictions...",
+    "[22:34:25] [PLANNER] Dispatching Reporting Agent to package final report...",
+    "[22:34:25] [REPORTING_AGENT] Gathering diagnostic reports and packaging metrics...",
+    "[22:34:25] [REPORTING_AGENT] Unified DRACULA reliability report successfully generated. Scan ID: 71941b86-b71a-44fc-a0d7-b47e45bf2cda",
+    "[22:34:25] [PLANNER] Master Orchestration pipeline fully completed."
+  ],
+  "scores": {
+    "security": 100,
+    "accessibility": 100,
+    "ui_stability": 100,
+    "performance": 70,
+    "overall": 95
+  },
+  "findings": [
+    {
+      "category": "Performance",
+      "issue": "High loading speed latency: The page took 22.42 seconds to render.",
+      "severity": "Medium",
+      "suggested_fix": "Minify script payloads, leverage edge-based CDN distribution, and implement browser asset caching."
+    },
+    {
+      "category": "Performance",
+      "issue": "Heavy bundle size payload: Transfer volume estimated at 3.60 MB.",
+      "severity": "Medium",
+      "suggested_fix": "Compress graphic assets (WebP format), divide bundles via dynamic code-splitting, and prune unused assets."
+    }
+  ],
+  "bugs_found": 0,
+  "security_issues": 0,
+  "ui_issues": 0,
+  "benchmarks": {
+    "security": {
+      "score": 100,
+      "industry_average": 72,
+      "difference": 28,
+      "formatted_diff": "+28"
+    },
+    "accessibility": {
+      "score": 100,
+      "industry_average": 78,
+      "difference": 22,
+      "formatted_diff": "+22"
+    },
+    "ui_stability": {
+      "score": 100,
+      "industry_average": 82,
+      "difference": 18,
+      "formatted_diff": "+18"
+    },
+    "performance": {
+      "score": 70,
+      "industry_average": 75,
+      "difference": -5,
+      "formatted_diff": "-5"
+    }
+  },
+  "trends": {
+    "has_history": true,
+    "overall_change": 1,
+    "formatted_change": "+1",
+    "previous_overall_score": 94,
+    "score_deltas": {
+      "security": {
+        "current": 100,
+        "previous": 100,
+        "change": 0,
+        "formatted_change": "0"
+      },
+      "accessibility": {
+        "current": 100,
+        "previous": 100,
+        "change": 0,
+        "formatted_change": "0"
+      },
+      "ui_stability": {
+        "current": 100,
+        "previous": 100,
+        "change": 0,
+        "formatted_change": "0"
+      },
+      "performance": {
+        "current": 70,
+        "previous": 60,
+        "change": 10,
+        "formatted_change": "+10"
+      },
+      "overall": {
+        "current": 95,
+        "previous": 94,
+        "change": 1,
+        "formatted_change": "+1"
+      }
+    }
+  },
+  "executive_summary": {
+    "risk_level": "Low",
+    "most_critical_issue": "High loading speed latency: The page took 22.42 seconds to render.",
+    "health_score": "95/100",
+    "what_will_break_first": "Client Authentication / Session Middleware",
+    "comparative_health": "Above Industry Average"
+  },
+  "analysis": {
+    "summary": "DRACULA scanned website https://example.com and observed a security rating of 100%. Accessibility metrics scored 100% due to image elements missing alt parameters. The platform stability score stands at 100% with several script-level constraints.",
+    "suggested_fix": "Implement unified routing middleware: Enforce HTTPS redirection, inject token validations in forms, and declare alt tags on all img elements.",
+    "details": [
+      "Overall security analysis completed at 100%",
+      "UI/UX stability metrics evaluated at 100%",
+      "Core accessibility score established at 100%",
+      "Predicted system breakdown point: Client Authentication / Session Middleware"
+    ],
+    "predicted_risk_level": "Low",
+    "what_will_break_first": {
+      "most_likely_failure_point": "Client Authentication / Session Middleware",
+      "reason": "Lack of anti-CSRF token verification parameters in forms and insecure input constraints.",
+      "risk_level": "Low",
+      "recommendation": "Inject verification token middleware and introduce length limiters to forms."
+    },
+    "root_cause_analysis": "Web servers without secure HTTPS handshakes, CSRF shields, and modern DOM aria tags trigger severe compliance and stability warnings.",
+    "severity_analysis": "Discovered missing security parameters and raw form validations which introduce moderate risk vectors."
+  }
+}

@@ -12,12 +12,15 @@ from routes import analyze_repo, test_website, results
 app = FastAPI(title="DRACULA API", description="Autonomous AI QA and Debugging Platform MVP")
 
 # Ensure directories exist
-os.makedirs("screenshots", exist_ok=True)
-os.makedirs("logs", exist_ok=True)
+os.makedirs("storage/screenshots", exist_ok=True)
+os.makedirs("storage/logs", exist_ok=True)
+os.makedirs("storage/reports", exist_ok=True)
 
-# Mount static directories
-app.mount("/screenshots", StaticFiles(directory="screenshots"), name="screenshots")
-app.mount("/logs", StaticFiles(directory="logs"), name="logs")
+# Mount static directories inside storage
+app.mount("/screenshots", StaticFiles(directory="storage/screenshots"), name="screenshots")
+app.mount("/static-logs", StaticFiles(directory="storage/logs"), name="static-logs")
+
+
 
 # Read CORS origins from env
 raw_origins = os.getenv("CORS_ORIGINS", "http://localhost:3000")
