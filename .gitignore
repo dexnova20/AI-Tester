@@ -1,6 +1,10 @@
-backend/
 node_modules/
 .next/
 .DS_Store
 *.pyc
 __pycache__/
+backend/.env
+backend/venv/
+backend/screenshots/
+backend/storage/
+C_/
