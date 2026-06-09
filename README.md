@@ -27,7 +27,6 @@
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [Pages](#pages)
-- [Team](#team)
 
 ---
 
@@ -198,15 +197,6 @@ xdg-open index.html    # Linux
 | `/settings` | Settings | Account and theme preferences |
 | `/docs` | Docs | Platform documentation |
 | `/help` | Help | Support and FAQs |
-
----
-
-## Team
-
-| Person | Branch | Responsibility |
-|--------|--------|----------------|
-| Person A | `feat/person-a` | Config, global styles, app shell, landing/login/signup pages, shared components |
-| Person B | `feat/person-b` | Dashboard pages, utility pages, dashboard components, landing section components, legacy static files |
 
 ---
 
