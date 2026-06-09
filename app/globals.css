@@ -1,0 +1,421 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Fonts ─── */
+:root {
+  --font-bebas: 'Bebas Neue', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f5f0eb;
+  color: #0d0d0d;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f5f0eb; }
+::-webkit-scrollbar-thumb { background: #0d0d0d; border-radius: 99px; }
+
+/* ─── Noise texture overlay ─── */
+.noise {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* ─── Typography helpers ─── */
+.font-bebas { font-family: 'Bebas Neue', sans-serif; }
+
+/* ─── Card lift ─── */
+.lift {
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.14);
+}
+
+/* ─── Terminal ─── */
+.mono {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 11.5px;
+  line-height: 1.9;
+}
+.t-green  { color: #16a34a; }
+.t-yellow { color: #ca8a04; }
+.t-red    { color: #dc2626; }
+.t-blue   { color: #2563eb; }
+.t-purple { color: #7c3aed; }
+.t-muted  { color: #9ca3af; font-style: italic; }
+
+/* ─── Status dot ─── */
+.dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+}
+.dot-green  { background: #16a34a; box-shadow: 0 0 0 3px rgba(22,163,74,0.18); }
+.dot-yellow { background: #ca8a04; box-shadow: 0 0 0 3px rgba(202,138,4,0.18); }
+.dot-red    { background: #dc2626; box-shadow: 0 0 0 3px rgba(220,38,38,0.18); }
+.dot-grey   { background: #9ca3af; }
+
+/* ─── Float animation ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-10px) rotate(0.5deg); }
+  66%       { transform: translateY(-5px) rotate(-0.5deg); }
+}
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes pulse-ring {
+  0%   { transform: scale(0.95); opacity: 0.7; }
+  70%  { transform: scale(1.08); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float     { animation: float 7s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 14s linear infinite; }
+.animate-blink     { animation: blink 1.1s step-end infinite; }
+.animate-slide-up  { animation: slide-up 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+
+/* ─── Brutalist section label ─── */
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.45;
+}
+
+/* ─── Thick button ─── */
+.btn-solid {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  border-radius: 14px;
+  padding: 14px 28px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s;
+}
+.btn-solid:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.18); }
+.btn-solid:active { transform: translateY(0); }
+
+.btn-dark  { background: #0d0d0d; color: #f5f0eb; }
+.btn-blue  { background: #2563eb; color: #fff; }
+.btn-cream { background: #f5f0eb; color: #0d0d0d; border: 1.5px solid rgba(0,0,0,0.10); }
+.btn-yellow{ background: #f5c518; color: #0d0d0d; }
+
+/* ─── Scan input ─── */
+.scan-input {
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 13px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: #f5f0eb;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.scan-input::placeholder { color: rgba(245,240,235,0.35); }
+.scan-input:focus { border-color: rgba(255,255,255,0.35); }
+
+/* ─── Dashboard body ─── */
+body.dash-mode {
+  background: #f0ece6;
+}
+
+/* ─── Shadow soft ─── */
+.shadow-soft {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+}
+
+/* ─── Select styling ─── */
+select.scan-input {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+/* ─── Tailwind color shorthands used by page.tsx ─── */
+.bg-cream  { background-color: #f5f0eb; }
+.bg-dark-1 { background-color: #0d0d0d; }
+.bg-dark-2 { background-color: #161616; }
+.bg-dark-3 { background-color: #1e1e1e; }
+.bg-dark-4 { background-color: #2a2a2a; }
+.bg-yellow { background-color: #f5c518; }
+.text-cream { color: #f5f0eb; }
+.text-ink   { color: #0d0d0d; }
+.text-blue  { color: #2563eb; }
+.text-purple { color: #7c3aed; }
+.text-green { color: #16a34a; }
+.text-red   { color: #dc2626; }
+
+/* ═══════════════════════════════════════════════
+   DARK MODE — activated by html.dark class
+   Covers ALL light-themed surfaces globally.
+   Smooth 0.3s transition on toggle.
+═══════════════════════════════════════════════ */
+
+/* ─── Smooth transition when toggling ─── */
+body,
+aside, header, main, nav,
+.bg-white, .bg-cream,
+input, select, textarea {
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+}
+
+/* ─── Base ─── */
+html.dark body {
+  background: #14141f;
+  color: #e8e2d9;
+}
+html.dark ::-webkit-scrollbar-track { background: #14141f; }
+html.dark ::-webkit-scrollbar-thumb { background: #444; }
+
+/* ─── Utility class overrides ─── */
+html.dark .bg-cream  { background-color: #14141f; }
+html.dark .text-ink  { color: #e8e2d9; }
+html.dark .text-cream { color: #e8e2d9; }
+
+/* ─── AppShell root wrapper ─── */
+html.dark .flex.h-screen {
+  background: #14141f !important;
+}
+
+/* ─── Dark cards contrast — add subtle borders so they pop ─── */
+html.dark .bg-dark-1 { background-color: #0d0d0d; border: 1px solid rgba(255,255,255,0.06); }
+html.dark .bg-dark-2 { background-color: #161616; border: 1px solid rgba(255,255,255,0.04); }
+html.dark .bg-dark-3 { background-color: #1e1e1e; }
+
+/* ─── AppShell sidebar ─── */
+html.dark aside {
+  background: #0d0d14 !important;
+  border-color: rgba(255,255,255,0.06) !important;
+}
+
+/* ─── AppShell header (top bar) ─── */
+html.dark header {
+  background: #111118 !important;
+  border-color: rgba(255,255,255,0.06) !important;
+}
+html.dark header h1 { color: #f5f0eb !important; }
+html.dark header p  { color: rgba(245,240,235,0.4) !important; }
+
+/* Header bell, status badge, home link */
+html.dark header button,
+html.dark header a {
+  color: rgba(245,240,235,0.5) !important;
+}
+html.dark header button:hover,
+html.dark header a:hover {
+  color: #f5f0eb !important;
+}
+html.dark header .rounded-\[10px\] {
+  background: #1a1a1a !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+html.dark header .rounded-\[10px\]:hover {
+  background: #222 !important;
+}
+html.dark header svg { color: rgba(245,240,235,0.5) !important; }
+
+/* ─── All bg-white surfaces (cards, panels, tables) ─── */
+html.dark .bg-white {
+  background-color: #1a1a26 !important;
+}
+html.dark .hover\:bg-\[\#fafaf8\]:hover,
+html.dark .hover\:bg-white\/6:hover {
+  background-color: rgba(255,255,255,0.04) !important;
+}
+
+/* ─── Cream / beige backgrounds ─── */
+html.dark .bg-\[\#f0ece6\] { background-color: #14141f !important; }
+html.dark .bg-\[\#f5f0eb\] { background-color: #1c1c28 !important; }
+html.dark .bg-\[\#fafaf8\] { background-color: #1a1a26 !important; }
+html.dark .bg-\[\#e8e2da\] { background-color: #252530 !important; }
+
+/* ─── Text colors: ink → cream ─── */
+html.dark .text-\[\#0d0d0d\] { color: #f5f0eb !important; }
+html.dark .text-\[\#0d0d0d\]\/60 { color: rgba(245,240,235,0.6) !important; }
+html.dark .text-\[\#0d0d0d\]\/50 { color: rgba(245,240,235,0.5) !important; }
+html.dark .text-\[\#0d0d0d\]\/45 { color: rgba(245,240,235,0.45) !important; }
+html.dark .text-\[\#0d0d0d\]\/40 { color: rgba(245,240,235,0.4) !important; }
+html.dark .text-\[\#0d0d0d\]\/35 { color: rgba(245,240,235,0.35) !important; }
+html.dark .text-\[\#0d0d0d\]\/30 { color: rgba(245,240,235,0.3) !important; }
+
+/* ─── Borders ─── */
+html.dark .border-black\/4,
+html.dark .border-black\/6,
+html.dark .border-black\/8 {
+  border-color: rgba(255,255,255,0.06) !important;
+}
+html.dark .divide-black\/4 > * + * {
+  border-color: rgba(255,255,255,0.06) !important;
+}
+html.dark .border-t { border-color: rgba(255,255,255,0.06) !important; }
+html.dark .border-b { border-color: rgba(255,255,255,0.06) !important; }
+
+/* ─── Inputs, selects, textareas ─── */
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background: #1a1a26 !important;
+  color: #f5f0eb !important;
+  border-color: rgba(255,255,255,0.1) !important;
+}
+html.dark input:focus,
+html.dark select:focus {
+  border-color: rgba(37,99,235,0.5) !important;
+}
+html.dark input::placeholder { color: rgba(245,240,235,0.3) !important; }
+
+/* ─── Toggle switches ─── */
+html.dark .bg-black\/10 { background: rgba(255,255,255,0.1) !important; }
+
+/* ─── Buttons in dark mode ─── */
+html.dark .btn-cream {
+  background: #1c1c28;
+  color: #f5f0eb;
+  border-color: rgba(255,255,255,0.1);
+}
+
+/* ─── Home page navbar in dark ─── */
+html.dark .bg-cream\/90 {
+  background: rgba(20,20,31,0.9) !important;
+}
+html.dark nav.rounded-\[20px\] {
+  background: rgba(20,20,31,0.9) !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+html.dark nav a {
+  color: rgba(245,240,235,0.5) !important;
+}
+html.dark nav a:hover {
+  color: #f5f0eb !important;
+}
+
+/* ─── Home page footer in dark ─── */
+html.dark footer {
+  border-color: rgba(255,255,255,0.06) !important;
+}
+html.dark footer a { color: rgba(245,240,235,0.4) !important; }
+html.dark footer a:hover { color: #f5f0eb !important; }
+html.dark footer p { color: rgba(245,240,235,0.35) !important; }
+
+/* ─── Security page severity cards (keep their bg colors) ─── */
+html.dark .bg-\[\#dc2626\],
+html.dark .bg-\[\#c2410c\],
+html.dark .bg-\[\#ca8a04\],
+html.dark .bg-\[\#2563eb\] {
+  /* keep original colors - these look fine in dark */
+}
+
+/* ─── Score ring, badges ─── */
+html.dark .rounded-full.bg-\[\#e8e2da\] {
+  background: #252530 !important;
+  color: rgba(245,240,235,0.5) !important;
+}
+
+/* ─── Shadow adjustments ─── */
+html.dark .shadow-soft {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 1px 4px rgba(0,0,0,0.15) !important;
+}
+
+/* ─── Login card dark ─── */
+html.dark .min-h-screen.bg-\[\#f5f0eb\] {
+  background: #14141f !important;
+}
+html.dark .bg-\[\#0d0d0d\]\/95 {
+  background: rgba(13,13,20,0.97) !important;
+}
+
+/* ─── Floating Theme Toggle ─── */
+.theme-toggle-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.theme-toggle-float:hover {
+  transform: scale(1.1);
+}
+html.dark .theme-toggle-float {
+  background: #1a1a1a;
+  border-color: rgba(255,255,255,0.12);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* ═══════════════════════════════════════════════
+   MOBILE RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Login/Signup — hide brand panel, stack */
+  .brand-panel { display: none !important; }
+  .card { flex-direction: column !important; min-height: auto !important; }
+
+  /* AppShell sidebar — collapse */
+  aside { display: none !important; }
+
+  /* Grids — single column */
+  .grid-cols-4,
+  .grid-cols-2.md\:grid-cols-4,
+  .grid-cols-2.lg\:grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Stats band spacing */
+  .divide-x > * + * { border-left: none !important; border-top: 1px solid rgba(255,255,255,0.06); }
+
+  /* General padding tighten */
+  .p-10, .p-12 { padding: 24px !important; }
+  .px-6 { padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* Section title font */
+  .font-bebas { letter-spacing: 0.04em; }
+}
+
+@media (max-width: 480px) {
+  .grid-cols-4,
+  .grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+  .flex-wrap { flex-direction: column; align-items: stretch; }
+  .flex-wrap > a, .flex-wrap > button { width: 100% !important; }
+}
+
