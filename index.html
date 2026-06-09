@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
+  <title>AI Agent — Sakura Serenity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Creepster&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+  <div id="cinematic-intro">
+    <div class="intro-text" id="intro-1"><span class="highlight">Autonomous</span> AI QA</div>
+    <div class="intro-text" id="intro-2"><span class="highlight">Debugging</span> & Analysis</div>
+    <div class="intro-text" id="intro-3">Security Testing <span class="highlight">Platform</span></div>
+    <div class="intro-text" id="intro-4">Automate everything with</div>
+  </div>
+
+  <div id="g_id_onload"
+       data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+       data-context="signin"
+       data-ux_mode="popup"
+       data-callback="handleGoogleOneTapResponse"
+       data-auto_select="false">
+  </div>
+
+  <div class="bg-carbon"></div>
+  <div class="bg-radial"></div>
+
+  <div class="bg-text-wrap">
+    <span class="bg-text dracula-bg">DRACULA</span>
+  </div>
+
+  <span class="bg-runner r1">AI AGENT &nbsp;·&nbsp; NEURAL NET &nbsp;·&nbsp; AI AGENT &nbsp;·&nbsp; SECURE OPS &nbsp;·&nbsp; AI AGENT &nbsp;·&nbsp; QUANTUM CORE &nbsp;·&nbsp; AI AGENT</span>
+  <span class="bg-runner r2">ENCRYPTED &nbsp;·&nbsp; AI AGENT &nbsp;·&nbsp; ZERO TRUST &nbsp;·&nbsp; AI AGENT &nbsp;·&nbsp; COGNITIVE &nbsp;·&nbsp; AI AGENT &nbsp;·&nbsp; ENCRYPTED</span>
+  <span class="bg-runner r3">AI AGENT &nbsp;·&nbsp; NEURAL NET &nbsp;·&nbsp; AI AGENT &nbsp;·&nbsp; SECURE OPS &nbsp;·&nbsp; AI AGENT &nbsp;·&nbsp; QUANTUM CORE &nbsp;·&nbsp; AI AGENT</span>
+  <span class="bg-runner r4">ENCRYPTED &nbsp;·&nbsp; AI AGENT &nbsp;·&nbsp; ZERO TRUST &nbsp;·&nbsp; AI AGENT &nbsp;·&nbsp; COGNITIVE &nbsp;·&nbsp; AI AGENT &nbsp;·&nbsp; ENCRYPTED</span>
+
+  <div class="dot-grid gl" id="dgl"></div>
+  <div class="dot-grid gr" id="dgr"></div>
+
+  <div class="scan"></div>
+  <div class="bg-vignette"></div>
+  <div class="chrome-line top"></div>
+  <div class="chrome-line bottom"></div>
+
+  <div id="global-theme-toggle" class="floating-theme-toggle">
+    <span class="theme-text-label">Dark Mode</span>
+    <div class="theme-switch" onclick="toggleTheme()">
+      <div class="theme-switch-knob"></div>
+    </div>
+  </div>
+
+  <div class="page active" id="landing-page" style="position: fixed; inset: 0; max-width: 100vw !important; padding: 0; overflow-y: auto; overflow-x: hidden; z-index: 20; background: transparent;">
+
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column;">
+
+      <div style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; padding: 20px;">
+
+        <div class="logo-ring animate-on-scroll show" style="margin: 0 auto 40px; transform: scale(1.4);">
+          <div class="logo-inner">
+            <svg viewBox="0 0 36 36" fill="none">
+              <path d="M18 3 L30 8.5 L30 18 C30 25.5 24.5 30.5 18 34 C11.5 30.5 6 25.5 6 18 L6 8.5 Z" fill="#2e2020" stroke="#5a3d3d" stroke-width="1.2" stroke-linejoin="round"/>
+              <circle cx="18" cy="18" r="8" stroke="var(--gold)" stroke-width="1.2" stroke-dasharray="3, 1.5"/>
+              <circle cx="18" cy="18" r="3.5" fill="var(--cherry)" style="filter: drop-shadow(0 0 3px var(--cherry));"/>
+            </svg>
+          </div>
+        </div>
+
+        <h1 class="animate-on-scroll show" style="transition-delay: 0.1s; font-family:'Playfair Display',serif; font-size: clamp(50px, 8vw, 110px); font-weight: 800; letter-spacing: 0.18em; color: var(--text); text-transform: uppercase; margin-bottom: 15px; text-align: center;">DRACULA</h1>
+        <h2 class="animate-on-scroll show" style="transition-delay: 0.2s; font-family:'Cormorant Garamond',serif; font-size: clamp(18px, 2.5vw, 26px); font-weight: 400; color: var(--text-mid); font-style: italic; text-align: center; max-width: 650px;">Autonomous AI QA, Debugging & Security Testing Platform</h2>
+
+        <div class="scroll-indicator animate-on-scroll show" style="transition-delay: 0.3s; position: absolute; bottom: 40px; animation: scrollBounce 2s infinite; opacity: 0.7; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer;" onclick="document.getElementById('landing-features').scrollIntoView({behavior: 'smooth'})">
+          <span style="font-family: 'Playfair Display', serif; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-mid);">System Data</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cherry)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+        </div>
+
+      </div>
+
+      <div id="landing-features" style="padding: 60px 40px; width: 100%;">
+
+        <div class="sec-title animate-on-scroll" style="justify-content: center; font-size: 16px; margin-bottom: 50px;">Platform Capabilities</div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 80px;">
+
+          <div class="trust-pill animate-on-scroll" style="transition-delay: 0.1s; flex-direction: column; align-items: flex-start; padding: 35px 30px; text-align: left; background: rgba(184, 78, 120, 0.04); border-radius: 4px; backdrop-filter: blur(10px);">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="var(--cherry)" stroke-width="1.5"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="var(--cherry)" stroke-width="1.2"/></svg>
+              <strong style="color:var(--text); font-family:'Playfair Display',serif; font-size: 16px; letter-spacing: 0.05em;">Website Scanner</strong>
+            </div>
+            <span style="font-size: 14.5px; line-height: 1.7; color: var(--text-mid);">Input any URL, DRACULA launches a headless Chromium browser, crawls up to 3 pages, captures screenshots, detects accessibility/security/UI issues and generates an AI audit report.</span>
+          </div>
+
+          <div class="trust-pill animate-on-scroll" style="transition-delay: 0.2s; flex-direction: column; align-items: flex-start; padding: 35px 30px; text-align: left; background: rgba(184, 78, 120, 0.04); border-radius: 4px; backdrop-filter: blur(10px);">
+             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5" r="3" stroke="var(--cherry)" stroke-width="1.5"/><circle cx="6" cy="12" r="3" stroke="var(--cherry)" stroke-width="1.5"/><circle cx="18" cy="19" r="3" stroke="var(--cherry)" stroke-width="1.5"/><path d="M9 10.5l6-3M9 13.5l6 3" stroke="var(--cherry)" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <strong style="color:var(--text); font-family:'Playfair Display',serif; font-size: 16px; letter-spacing: 0.05em;">GitHub Repo Analyzer</strong>
+            </div>
+            <span style="font-size: 14.5px; line-height: 1.7; color: var(--text-mid);">Simulates a clone and build environment, diagnoses configuration failures and generates a detailed findings report.</span>
+          </div>
+
+          <div class="trust-pill animate-on-scroll" style="transition-delay: 0.3s; flex-direction: column; align-items: flex-start; padding: 35px 30px; text-align: left; background: rgba(184, 78, 120, 0.04); border-radius: 4px; backdrop-filter: blur(10px);">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="var(--cherry)" stroke-width="1.5"/></svg>
+              <strong style="color:var(--text); font-family:'Playfair Display',serif; font-size: 16px; letter-spacing: 0.05em;">Self-Healing Browser</strong>
+            </div>
+            <span style="font-size: 14.5px; line-height: 1.7; color: var(--text-mid);">Automatically installs Playwright Chromium binaries if missing on the host machine to ensure zero downtime during audits.</span>
+          </div>
+
+          <div class="trust-pill animate-on-scroll" style="transition-delay: 0.4s; flex-direction: column; align-items: flex-start; padding: 35px 30px; text-align: left; background: rgba(184, 78, 120, 0.04); border-radius: 4px; backdrop-filter: blur(10px);">
+             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="var(--cherry)" stroke-width="1.5"/><path d="M7 8l4 4-4 4M13 16h4" stroke="var(--cherry)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <strong style="color:var(--text); font-family:'Playfair Display',serif; font-size: 16px; letter-spacing: 0.05em;">Live Scan Console</strong>
+            </div>
+            <span style="font-size: 14.5px; line-height: 1.7; color: var(--text-mid);">Real-time terminal log stream, score gauges, screenshot gallery and findings panel update as the scan runs.</span>
+          </div>
+
+        </div>
+
+        <div class="sec-title animate-on-scroll" style="justify-content: center; font-size: 16px; margin-bottom: 40px;">Core Tech Stack</div>
+        <div class="animate-on-scroll" style="transition-delay: 0.1s; width: 100%; overflow-x: auto; margin-bottom: 40px;">
+          <table class="tech-stack-table" style="font-size: 16px; min-width: 600px; backdrop-filter: blur(10px);">
+            <tr>
+              <td>Frontend</td>
+              <td>Next.js 14, React 18, Tailwind CSS v4, TypeScript</td>
+            </tr>
+            <tr>
+              <td>Backend</td>
+              <td>FastAPI, Uvicorn, Playwright (Headless Chromium), Python-Dotenv</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="animate-on-scroll" style="transition-delay: 0.3s; padding: 20px 40px 120px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+        <button class="btn-primary" style="width: 280px; font-size: 14px; padding: 20px;" onclick="showPage('login-page')">
+          Access System (Login)
+        </button>
+        <button class="btn-google" style="width: 280px; font-size: 14px; padding: 20px; backdrop-filter: blur(10px);" onclick="showPage('signup-page')">
+          Register Agent (Sign Up)
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="page" id="login-page">
+    <div class="card" style="padding:0; display:flex; flex-direction:row; min-height:400px; position:relative;">
+
+      <div class="brand-panel" style="flex:0 0 270px;">
+        <div class="brand-panel-glow"></div>
+        <div class="brand-panel-glow-b"></div>
+        <div class="c tl"></div>
+        <div class="c bl"></div>
+
+        <div class="logo-ring">
+          <div class="logo-inner">
+            <svg viewBox="0 0 36 36" fill="none">
+              <path d="M18 3 L30 8.5 L30 18 C30 25.5 24.5 30.5 18 34 C11.5 30.5 6 25.5 6 18 L6 8.5 Z"
+                fill="#2e2020" stroke="#5a3d3d" stroke-width="1.2" stroke-linejoin="round"/>
+              <circle cx="18" cy="18" r="8" stroke="var(--gold)" stroke-width="1.2" stroke-dasharray="3, 1.5"/>
+              <circle cx="18" cy="18" r="3.5" fill="var(--cherry)" style="filter: drop-shadow(0 0 3px var(--cherry));"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="brand-wordmark">DRACULA</div>
+        <div class="brand-tagline">Secure Access Portal</div>
+        <div class="brand-divider"></div>
+        <div class="brand-badge">Authorized Personnel Only</div>
+
+        <div class="trust-pills" style="margin-top:32px;">
+          <div class="trust-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+                    stroke="rgba(0,212,255,0.5)" stroke-width="1.5" fill="none"/>
+            </svg>
+            <span>256-bit Encryption</span>
+          </div>
+          <div class="trust-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="rgba(123,97,255,0.5)" stroke-width="1.5"/>
+              <path d="M9 12l2 2 4-4" stroke="rgba(123,97,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Zero-Trust Architecture</span>
+          </div>
+          <div class="trust-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="11" width="18" height="11" rx="1"
+                    stroke="rgba(0,212,255,0.5)" stroke-width="1.5" fill="none"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"
+                    stroke="rgba(0,212,255,0.5)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span>MFA Protected</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:1; padding:44px 42px 38px; display:flex; flex-direction:column; justify-content:center; min-width:0;">
+        <div class="c tr"></div>
+        <div class="c br"></div>
+
+        <div style="margin-bottom:30px;">
+          <div style="font-size:9px;font-family:'Syne',sans-serif;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:rgba(0,212,255,0.6);margin-bottom:8px;">Welcome back</div>
+          <h2 style="font-family:'Syne',sans-serif;font-size:26px;font-weight:700;color:var(--white);letter-spacing:0.02em;line-height:1.2;">Sign in to your account</h2>
+        </div>
+
+        <div class="field">
+          <label>Email Address</label>
+          <input type="email" id="login-email" placeholder="agent@domain.com" autocomplete="email"/>
+          <div class="error-msg" id="email-err">Enter a valid email address.</div>
+        </div>
+
+        <div class="field">
+          <label>Password</label>
+          <input type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password"/>
+          <div class="error-msg" id="pass-err">Minimum 6 characters required.</div>
+        </div>
+
+        <div class="forgot-row">
+          <a onclick="alert('Reset link sent! (demo)')">Forgot password?</a>
+        </div>
+
+        <button class="btn-primary" onclick="handleLogin()">
+          <span>Access System</span>
+        </button>
+
+        <div class="divider"><span>or continue with</span></div>
+
+        <button class="btn-google" onclick="googleLogin()">
+          <svg viewBox="0 0 48 48" width="18" height="18">
+            <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.2l6.8-6.8C35.8 2.4 30.2 0 24 0 14.6 0 6.6 5.5 2.5 13.5l8 6.2C12.4 13.3 17.8 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17z"/>
+            <path fill="#FBBC05" d="M10.5 28.3A14.6 14.6 0 0 1 9.5 24c0-1.5.3-3 .7-4.3l-8-6.2A23.9 23.9 0 0 0 0 24c0 3.8.9 7.5 2.5 10.8l8-6.5z"/>
+            <path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.2-7.7 2.2-6.1 0-11.3-4.1-13.2-9.7l-8 6.2C6.6 42.6 14.6 48 24 48z"/>
+          </svg>
+          Continue with Google
+        </button>
+
+        <div class="card-footer">
+          No account? <a onclick="showPage('signup-page')">Create one &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="page" id="signup-page">
+    <div class="card" style="position:relative;">
+
+      <div class="c tl"></div><div class="c tr"></div>
+      <div class="c bl"></div><div class="c br"></div>
+
+      <div class="brand-panel" style="flex:0 0 230px;">
+        <div class="brand-panel-glow"></div>
+        <div class="brand-panel-glow-b"></div>
+        <div class="c tl"></div>
+        <div class="c bl"></div>
+
+        <div class="logo-ring" style="width:60px;height:60px;">
+          <div class="logo-inner" style="width:52px;height:52px;">
+            <svg viewBox="0 0 36 36" fill="none" width="30" height="30">
+              <path d="M18 3 L30 8.5 L30 18 C30 25.5 24.5 30.5 18 34 C11.5 30.5 6 25.5 6 18 L6 8.5 Z"
+                fill="#2e2020" stroke="#5a3d3d" stroke-width="1.2" stroke-linejoin="round"/>
+              <circle cx="18" cy="18" r="8" stroke="var(--gold)" stroke-width="1.2" stroke-dasharray="3, 1.5"/>
+              <circle cx="18" cy="18" r="3.5" fill="var(--cherry)" style="filter: drop-shadow(0 0 3px var(--cherry));"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="brand-wordmark" style="font-size:17px;">Create Account</div>
+        <div class="brand-tagline">Join the DRACULA network</div>
+        <div class="brand-divider"></div>
+        <div class="brand-badge">Secure · Encrypted<br/>Access Portal</div>
+
+        <div style="margin-top:auto;padding-top:36px;">
+          <div class="card-footer" style="margin-top:0;">
+            Already registered?<br/>
+            <a onclick="showPage('login-page')">&larr; Sign in</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="signup-form-col" style="flex:1; padding:32px 38px 28px; display:flex; flex-direction:column; justify-content:flex-start; min-width:0; overflow-y:auto;">
+
+        <div class="sec-title" style="margin-top:0;">Personal Info</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:10px;">
+          <div class="field" style="margin-bottom:0;">
+            <label class="req">First Name</label>
+            <input type="text" id="fname" placeholder="Narendra"/>
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <label>Last Name</label>
+            <input type="text" id="lname" placeholder="Modi"/>
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <label>Date of Birth</label>
+            <input type="date" id="dob"/>
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <label>Gender</label>
+            <select id="gender">
+              <option value="" disabled selected>Select</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Prefer not to say</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="sec-title">Contact Details</div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 2fr;gap:10px;margin-bottom:10px;">
+          <div class="field" style="margin-bottom:0;">
+            <label class="req">Email Address</label>
+            <input type="email" id="su-email" placeholder="agent@domain.com"/>
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <label>Country Code</label>
+            <select id="code">
+              <option>🇮🇳 +91</option>
+              <option>🇺🇸 +1</option>
+              <option>🇬🇧 +44</option>
+              <option>🇦🇺 +61</option>
+              <option>🇦🇪 +971</option>
+            </select>
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" placeholder="98765 43210"/>
+          </div>
+        </div>
+
+        <div class="sec-title">Security</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+          <div class="field" style="margin-bottom:0;">
+            <label class="req">Password</label>
+            <input type="password" id="su-pass" placeholder="Min. 8 characters" oninput="checkStrength(this.value)"/>
+            <div class="strength-labels" id="strength-segs">
+              <div class="strength-seg" id="seg-1"></div>
+              <div class="strength-seg" id="seg-2"></div>
+              <div class="strength-seg" id="seg-3"></div>
+              <div class="strength-seg" id="seg-4"></div>
+            </div>
+            <div id="strength-label" style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--silver2);margin-top:4px;font-family:'Syne',sans-serif;font-weight:600;min-height:12px;transition:color .3s;"></div>
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <label class="req">Confirm Password</label>
+            <input type="password" id="su-pass2" placeholder="Re-enter password"/>
+            <div class="error-msg" id="pass-match-err">Passwords do not match.</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+          <div class="check-row" style="margin:0;flex:1;min-width:200px;">
+            <input type="checkbox" id="terms"/>
+            <label for="terms">I accept the <a href="#" onclick="return false">Terms of Service</a> and <a href="#" onclick="return false">Privacy Policy</a></label>
+          </div>
+          <button class="btn-primary" style="margin-top:0;width:190px;flex-shrink:0;" onclick="handleSignup()">
+            Register Agent
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div id="nav-drawer-backdrop" onclick="closeDrawer()" style="display:none;position:fixed;inset:0;z-index:90;background:rgba(60,47,47,0.15);"></div>
+  <div id="nav-drawer" style="display:none;position:fixed;top:0;left:0;bottom:0;z-index:91;width:260px;background:var(--surface-hi);border-right:1px solid var(--border);flex-direction:column;padding:0;overflow:hidden;">
+    <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(196,93,133,0.40),rgba(212,163,115,0.40),transparent);"></div>
+    <div style="display:flex;align-items:center;gap:12px;padding:20px 20px 18px;border-bottom:1px solid rgba(255,255,255,0.05);">
+      <div class="dsh-logo-ring" style="animation:none;width:34px;height:34px;flex-shrink:0;">
+        <svg viewBox="0 0 36 36" fill="none" width="18" height="18">
+          <path d="M18 3 L30 8.5 L30 18 C30 25.5 24.5 30.5 18 34 C11.5 30.5 6 25.5 6 18 L6 8.5 Z"
+            fill="#2e2020" stroke="#5a3d3d" stroke-width="1.2" stroke-linejoin="round"/>
+          <circle cx="18" cy="18" r="8" stroke="var(--gold)" stroke-width="1.2" stroke-dasharray="3, 1.5"/>
+          <circle cx="18" cy="18" r="3.5" fill="var(--cherry)" style="filter: drop-shadow(0 0 3px var(--cherry));"/>
+        </svg>
+      </div>
+      <div class="dsh-wordmark" style="font-size:15px;">DRACULA</div>
+    </div>
+    <nav style="flex:1;padding:12px 10px;display:flex;flex-direction:column;gap:2px;">
+      <div class="drw-item drw-item--active" onclick="showPage('dashboard-page');closeDrawer()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
+        Dashboard
+      </div>
+      <div class="drw-item" onclick="setMode('web');showPage('dashboard-page');closeDrawer()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M16.5 16.5l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        New Scan
+      </div>
+      <div class="drw-item" onclick="showPage('dashboard-page');closeDrawer()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" stroke-width="1.5"/><path d="M14 2v6h6M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Scan Reports
+      </div>
+      <div class="drw-item" onclick="showPage('dashboard-page');closeDrawer()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5"/></svg>
+        Security Audit
+      </div>
+      <div class="drw-item" onclick="showPage('dashboard-page');closeDrawer()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M9 10.5l6-3M9 13.5l6 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Integrations
+      </div>
+    <div style="height:1px;background:rgba(184,78,120,0.10);margin:8px 6px;"></div>
+      <div class="drw-item" onclick="closeDrawer()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Team Members
+      </div>
+      <div class="drw-item" onclick="showPage('dashboard-page');closeDrawer()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="1.5"/></svg>
+        Settings
+      </div>
+    </nav>
+    <div style="padding:14px 16px;border-top:1px solid rgba(184,78,120,0.10);">
+      <div class="drw-item theme-toggle-item" onclick="toggleTheme()" style="justify-content:space-between; margin-bottom:10px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span id="theme-icon-container" style="display:flex;align-items:center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="theme-text-label">Dark Mode</span>
+        </div>
+        <div class="theme-switch">
+          <div class="theme-switch-knob"></div>
+        </div>
+      </div>
+      <div class="drw-item" onclick="showPage('landing-page');closeDrawer()" style="color:var(--danger);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Disconnect
+      </div>
+    </div>
+  </div>
+
+  <div id="acct-dropdown" style="display:none;position:fixed;top:68px;right:16px;z-index:200;width:300px;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);box-shadow:0 8px 32px rgba(0,0,0,0.5);overflow:hidden;border-radius:4px;">
+    <div style="height:3px;background:linear-gradient(90deg,#b84e78,#c4874a);"></div>
+    <div style="padding:20px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:14px;">
+      <div class="dash-avatar" id="acct-avatar-mini" style="width:52px;height:52px;font-size:20px;margin:0;flex-shrink:0;"></div>
+      <div style="min-width:0;">
+        <div id="acct-name" style="font-family:'Playfair Display',Georgia,serif;font-size:18px;font-weight:800;color:#fff;letter-spacing:0.04em;">Agent</div>
+        <div id="acct-email" style="font-size:12px;color:#aaa;margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">—</div>
+        <div style="display:flex;align-items:center;gap:6px;margin-top:6px;">
+          <span class="status-dot" style="width:8px;height:8px;"></span>
+          <span style="font-family:'Playfair Display',Georgia,serif;font-size:10px;font-weight:700;letter-spacing:0.22em;color:#10b981;text-transform:uppercase;">Session Active</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:8px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color:#b84e78;flex-shrink:0;"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span id="session-timer" style="font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:700;letter-spacing:0.06em;color:#fff;font-variant-numeric:tabular-nums;">00:00:00</span>
+        </div>
+      </div>
+    </div>
+    <div style="padding:8px;">
+      <div class="acct-menu-item" onclick="openModal('profile-modal');closeAcctDropdown()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        My Profile
+      </div>
+      <div class="acct-menu-item" onclick="openModal('acct-settings-modal');closeAcctDropdown()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="1.5"/></svg>
+        Account Settings
+      </div>
+      <div class="acct-menu-item" onclick="openModal('notifications-modal');closeAcctDropdown()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Notifications
+      </div>
+      <div style="height:1px;background:rgba(255,255,255,0.08);margin:4px 6px;"></div>
+      <div class="acct-menu-item" style="color:#ef4444;" onclick="showPage('landing-page');closeAcctDropdown()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Sign Out
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFILE MODAL -->
+  <div id="profile-modal" style="display:none;position:fixed;inset:0;z-index:300;align-items:center;justify-content:center;">
+    <div onclick="closeModal('profile-modal')" style="position:absolute;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);"></div>
+    <div style="position:relative;z-index:1;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:16px;width:min(520px,92vw);max-height:88vh;overflow-y:auto;">
+      <div style="height:3px;background:linear-gradient(90deg,#b84e78,#c4874a);"></div>
+      <div style="padding:32px 36px;">
+        <!-- Header -->
+        <div style="display:flex;align-items:center;gap:18px;margin-bottom:28px;">
+          <div class="dash-avatar" id="profile-avatar" style="width:72px;height:72px;font-size:28px;margin:0;flex-shrink:0;"></div>
+          <div>
+            <div id="profile-name" style="font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:#fff;">Agent</div>
+            <div id="profile-email" style="font-size:13px;color:#aaa;margin-top:4px;">—</div>
+            <div style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:20px;padding:3px 12px;">
+              <span style="width:6px;height:6px;background:#10b981;border-radius:50%;display:inline-block;"></span>
+              <span style="font-size:10px;font-weight:700;letter-spacing:0.15em;color:#10b981;text-transform:uppercase;">Active Agent</span>
+            </div>
+          </div>
+        </div>
+        <!-- Info Grid -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;color:#b84e78;text-transform:uppercase;margin-bottom:6px;">Full Name</div>
+            <div id="profile-fullname" style="font-size:14px;color:#fff;font-weight:600;">—</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;color:#b84e78;text-transform:uppercase;margin-bottom:6px;">Role</div>
+            <div style="font-size:14px;color:#fff;font-weight:600;">Security Agent</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;color:#b84e78;text-transform:uppercase;margin-bottom:6px;">Member Since</div>
+            <div style="font-size:14px;color:#fff;font-weight:600;">May 2025</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;color:#b84e78;text-transform:uppercase;margin-bottom:6px;">Plan</div>
+            <div style="font-size:14px;color:#c4874a;font-weight:700;">Pro ✦</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;color:#b84e78;text-transform:uppercase;margin-bottom:6px;">Total Scans</div>
+            <div style="font-size:14px;color:#fff;font-weight:600;">0</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;color:#b84e78;text-transform:uppercase;margin-bottom:6px;">2FA Status</div>
+            <div style="font-size:14px;color:#10b981;font-weight:600;">Enabled ✓</div>
+          </div>
+        </div>
+        <!-- Bio -->
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;margin-bottom:20px;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;color:#b84e78;text-transform:uppercase;margin-bottom:8px;">Bio</div>
+          <div style="font-size:13px;color:#aaa;line-height:1.7;">Autonomous security testing specialist. Focused on web vulnerability detection, CI/CD pipeline hardening, and AI-assisted QA workflows.</div>
+        </div>
+        <button onclick="closeModal('profile-modal')" style="width:100%;padding:12px;background:linear-gradient(135deg,#b84e78,#c4874a);border:none;border-radius:8px;color:#fff;font-family:'Playfair Display',serif;font-size:13px;font-weight:700;letter-spacing:0.12em;cursor:pointer;">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCOUNT SETTINGS MODAL -->
+  <div id="acct-settings-modal" style="display:none;position:fixed;inset:0;z-index:300;align-items:center;justify-content:center;">
+    <div onclick="closeModal('acct-settings-modal')" style="position:absolute;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);"></div>
+    <div style="position:relative;z-index:1;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:16px;width:min(560px,92vw);max-height:88vh;overflow-y:auto;">
+      <div style="height:3px;background:linear-gradient(90deg,#b84e78,#c4874a);"></div>
+      <div style="padding:32px 36px;">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:#fff;margin-bottom:24px;display:flex;align-items:center;gap:10px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#b84e78" stroke-width="1.8"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="#b84e78" stroke-width="1.8"/></svg>
+          Account Settings
+        </div>
+        <!-- Sections -->
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:20px;">
+          <!-- Profile -->
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;color:#b84e78;text-transform:uppercase;padding:8px 4px 4px;">Profile</div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);cursor:pointer;" onmouseover="this.style.background='rgba(255,255,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <div><div style="font-size:13px;color:#fff;font-weight:600;">Display Name</div><div style="font-size:11px;color:#777;margin-top:2px;">Your public name across the platform</div></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;cursor:pointer;" onmouseover="this.style.background='rgba(255,255,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <div><div style="font-size:13px;color:#fff;font-weight:600;">Profile Photo</div><div style="font-size:11px;color:#777;margin-top:2px;">Upload or change your avatar</div></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </div>
+          </div>
+          <!-- Security -->
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;color:#b84e78;text-transform:uppercase;padding:12px 4px 4px;">Security</div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);cursor:pointer;" onmouseover="this.style.background='rgba(255,255,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <div><div style="font-size:13px;color:#fff;font-weight:600;">Change Password</div><div style="font-size:11px;color:#777;margin-top:2px;">Last changed: Never</div></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div><div style="font-size:13px;color:#fff;font-weight:600;">Two-Factor Authentication</div><div style="font-size:11px;color:#777;margin-top:2px;">Adds an extra layer of security</div></div>
+              <span style="font-size:11px;font-weight:700;color:#10b981;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:20px;padding:3px 10px;">ON</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;cursor:pointer;" onmouseover="this.style.background='rgba(255,255,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <div><div style="font-size:13px;color:#fff;font-weight:600;">Active Sessions</div><div style="font-size:11px;color:#777;margin-top:2px;">Manage devices logged in to your account</div></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </div>
+          </div>
+          <!-- Preferences -->
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;color:#b84e78;text-transform:uppercase;padding:12px 4px 4px;">Preferences</div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div><div style="font-size:13px;color:#fff;font-weight:600;">Email Notifications</div><div style="font-size:11px;color:#777;margin-top:2px;">Receive scan reports via email</div></div>
+              <span style="font-size:11px;font-weight:700;color:#10b981;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:20px;padding:3px 10px;">ON</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;cursor:pointer;" onmouseover="this.style.background='rgba(255,255,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <div><div style="font-size:13px;color:#fff;font-weight:600;">Default Scan Depth</div><div style="font-size:11px;color:#777;margin-top:2px;">Currently set to: 1 page</div></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </div>
+          </div>
+          <!-- Account History -->
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;color:#b84e78;text-transform:uppercase;padding:12px 4px 4px;">Account History</div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#10b981" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#10b981" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <div><div style="font-size:13px;color:#fff;font-weight:600;">Account Created</div><div style="font-size:11px;color:#777;margin-top:1px;">May 2025</div></div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#b84e78" stroke-width="1.5"/></svg>
+                <div><div style="font-size:13px;color:#fff;font-weight:600;">Last Login</div><div style="font-size:11px;color:#777;margin-top:1px;">Today, this session</div></div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#c4874a" stroke-width="1.5"/><path d="M16.5 16.5l3.5 3.5" stroke="#c4874a" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <div><div style="font-size:13px;color:#fff;font-weight:600;">Total Scans Run</div><div style="font-size:11px;color:#777;margin-top:1px;">0 scans across all sessions</div></div>
+              </div>
+            </div>
+          </div>
+          <!-- Danger Zone -->
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;color:#ef4444;text-transform:uppercase;padding:12px 4px 4px;">Danger Zone</div>
+          <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.2);border-radius:10px;overflow:hidden;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;cursor:pointer;" onmouseover="this.style.background='rgba(239,68,68,0.08)'" onmouseout="this.style.background='transparent'">
+              <div><div style="font-size:13px;color:#ef4444;font-weight:600;">Delete Account</div><div style="font-size:11px;color:#777;margin-top:2px;">Permanently remove your account and all data</div></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </div>
+          </div>
+        </div>
+        <button onclick="closeModal('acct-settings-modal')" style="width:100%;padding:12px;background:linear-gradient(135deg,#b84e78,#c4874a);border:none;border-radius:8px;color:#fff;font-family:'Playfair Display',serif;font-size:13px;font-weight:700;letter-spacing:0.12em;cursor:pointer;">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTIFICATIONS MODAL -->
+  <div id="notifications-modal" style="display:none;position:fixed;inset:0;z-index:300;align-items:center;justify-content:center;">
+    <div onclick="closeModal('notifications-modal')" style="position:absolute;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);"></div>
+    <div style="position:relative;z-index:1;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:16px;width:min(480px,92vw);max-height:88vh;overflow-y:auto;">
+      <div style="height:3px;background:linear-gradient(90deg,#b84e78,#c4874a);"></div>
+      <div style="padding:32px 36px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+          <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:#fff;display:flex;align-items:center;gap:10px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" stroke="#b84e78" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Notifications
+          </div>
+          <span style="font-size:10px;font-weight:700;letter-spacing:0.15em;color:#777;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:4px 12px;">0 New</span>
+        </div>
+        <!-- Tabs -->
+        <div style="display:flex;gap:0;border:1px solid rgba(255,255,255,0.08);border-radius:8px;overflow:hidden;margin-bottom:20px;">
+          <div style="flex:1;padding:9px;text-align:center;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(184,78,120,0.15);color:#b84e78;cursor:pointer;">All</div>
+          <div style="flex:1;padding:9px;text-align:center;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#555;cursor:pointer;border-left:1px solid rgba(255,255,255,0.08);">Scans</div>
+          <div style="flex:1;padding:9px;text-align:center;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#555;cursor:pointer;border-left:1px solid rgba(255,255,255,0.08);">Security</div>
+          <div style="flex:1;padding:9px;text-align:center;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#555;cursor:pointer;border-left:1px solid rgba(255,255,255,0.08);">System</div>
+        </div>
+        <!-- Empty State -->
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 20px;text-align:center;">
+          <div style="width:64px;height:64px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" opacity="0.3"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;">Nothing new here</div>
+          <div style="font-size:13px;color:#555;line-height:1.7;max-width:260px;">You're all caught up. Notifications will appear here when scans complete, vulnerabilities are detected, or system events occur.</div>
+        </div>
+        <!-- Footer hint -->
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><circle cx="12" cy="12" r="9" stroke="#555" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="#555" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span style="font-size:12px;color:#555;line-height:1.5;">Run your first scan to start receiving security alerts and report notifications.</span>
+        </div>
+        <button onclick="closeModal('notifications-modal')" style="width:100%;padding:12px;background:linear-gradient(135deg,#b84e78,#c4874a);border:none;border-radius:8px;color:#fff;font-family:'Playfair Display',serif;font-size:13px;font-weight:700;letter-spacing:0.12em;cursor:pointer;">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETTINGS MODAL -->
+  <div id="settings-modal" style="display:none;position:fixed;inset:0;z-index:300;align-items:center;justify-content:center;">
+    <div onclick="document.getElementById('settings-modal').style.display='none'" style="position:absolute;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);"></div>
+    <div style="position:relative;z-index:1;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:16px;width:min(400px,90vw);padding:36px 40px;color:#fff;">
+      <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:800;letter-spacing:0.1em;margin-bottom:24px;">SETTINGS</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <div>
+          <div style="font-size:15px;font-weight:600;color:#fff;">Theme</div>
+          <div style="font-size:12px;color:#888;margin-top:3px;" id="settings-theme-label">Dark Mode</div>
+        </div>
+        <div class="theme-switch" onclick="toggleTheme();updateSettingsLabel()" style="cursor:pointer;">
+          <div class="theme-switch-knob"></div>
+        </div>
+      </div>
+      <button onclick="document.getElementById('settings-modal').style.display='none'" style="margin-top:24px;width:100%;padding:12px;background:linear-gradient(135deg,#b84e78,#c4874a);border:none;border-radius:8px;color:#fff;font-family:'Playfair Display',serif;font-size:13px;font-weight:700;letter-spacing:0.12em;cursor:pointer;">CLOSE</button>
+    </div>
+  </div>
+  <div id="about-modal" style="display:none;position:fixed;inset:0;z-index:200;align-items:center;justify-content:center;">
+    <div onclick="document.getElementById('about-modal').style.display='none'" style="position:absolute;inset:0;background:rgba(0,0,0,0.55);backdrop-filter:blur(8px);"></div>
+    <div style="position:relative;z-index:1;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:20px;width:min(560px,90vw);padding:44px 48px;color:#fff;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:28px;">
+        <div style="width:44px;height:44px;background:#ff2a5f;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#fff"/></svg>
+        </div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:800;letter-spacing:0.1em;">ABOUT DRACULA</div>
+          <div style="font-size:12px;color:#aaa;margin-top:2px;">Autonomous AI QA & Security Platform</div>
+        </div>
+      </div>
+      <p style="font-size:15px;line-height:1.8;color:#ccc;margin-bottom:18px;">DRACULA is a next-generation autonomous testing platform that combines AI-powered analysis with headless browser automation to deliver comprehensive security, accessibility, and UI audits — in seconds.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;">
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:16px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;color:#ff2a5f;margin-bottom:6px;">WEBSITE SCANNER</div>
+          <div style="font-size:13px;color:#bbb;line-height:1.6;">Crawls up to 3 pages, captures screenshots, detects WCAG violations and security misconfigs.</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:16px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;color:#ffcc29;margin-bottom:6px;">REPO ANALYZER</div>
+          <div style="font-size:13px;color:#bbb;line-height:1.6;">Scans GitHub repos for CVEs, secret leakage, build failures and Docker misconfigurations.</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:16px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;color:#3b82f6;margin-bottom:6px;">SELF-HEALING</div>
+          <div style="font-size:13px;color:#bbb;line-height:1.6;">Auto-installs Playwright Chromium binaries if missing — zero downtime, always ready.</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:16px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;color:#a3e635;margin-bottom:6px;">LIVE DASHBOARD</div>
+          <div style="font-size:13px;color:#bbb;line-height:1.6;">Real-time terminal logs, KPI gauges, security score and findings gallery update live.</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:#666;text-align:center;">Built with Playwright · FastAPI · Next.js 14 · Tailwind CSS v4</div>
+      <button onclick="document.getElementById('about-modal').style.display='none'" style="margin-top:24px;width:100%;padding:13px;background:#ff2a5f;border:none;border-radius:10px;color:#fff;font-family:'Playfair Display',serif;font-size:13px;font-weight:700;letter-spacing:0.12em;cursor:pointer;">CLOSE</button>
+    </div>
+  </div>
+
+  <!-- HELP MODAL -->
+  <div id="help-modal" style="display:none;position:fixed;inset:0;z-index:200;align-items:center;justify-content:center;">
+    <div onclick="document.getElementById('help-modal').style.display='none'" style="position:absolute;inset:0;background:rgba(0,0,0,0.55);backdrop-filter:blur(8px);"></div>
+    <div style="position:relative;z-index:1;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:20px;width:min(560px,90vw);padding:44px 48px;color:#fff;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:28px;">
+        <div style="width:44px;height:44px;background:#ffcc29;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#000"/><path d="M12 8v4M12 16h.01" stroke="#ffcc29" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:800;letter-spacing:0.1em;">HELP & DOCS</div>
+          <div style="font-size:12px;color:#aaa;margin-top:2px;">Quick reference guide</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:24px;">
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start;">
+          <div style="font-size:20px;flex-shrink:0;">🌐</div>
+          <div><div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;">Scanning a Website</div><div style="font-size:13px;color:#bbb;line-height:1.6;">Enter any public URL in the console (without https://), select crawl depth 1–3, toggle checks, then hit EXECUTE SCAN.</div></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start;">
+          <div style="font-size:20px;flex-shrink:0;">🐙</div>
+          <div><div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;">Analyzing a GitHub Repo</div><div style="font-size:13px;color:#bbb;line-height:1.6;">Switch to GIT REPO ANALYZER tab, enter username/repo format, enable desired checks and execute.</div></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start;">
+          <div style="font-size:20px;flex-shrink:0;">📊</div>
+          <div><div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;">Reading the Dashboard</div><div style="font-size:13px;color:#bbb;line-height:1.6;">KPI cards update after each scan. The gauge shows your global security score. Findings panel lists all reports with per-scan stats.</div></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start;">
+          <div style="font-size:20px;flex-shrink:0;">🎨</div>
+          <div><div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;">Themes</div><div style="font-size:13px;color:#bbb;line-height:1.6;">Toggle between Sakura Serenity (light) and Enterprise Minimalist (dark) using the theme switch. Preference is saved automatically.</div></div>
+        </div>
+      </div>
+      <button onclick="document.getElementById('help-modal').style.display='none'" style="width:100%;padding:13px;background:#ffcc29;border:none;border-radius:10px;color:#000;font-family:'Playfair Display',serif;font-size:13px;font-weight:700;letter-spacing:0.12em;cursor:pointer;">GOT IT</button>
+    </div>
+  </div>
+
+  <div class="page" id="home-page">
+    <div class="hp-nav">
+      <div class="hp-logo-wrap" onclick="showPage('home-page')">
+        <div class="dsh-logo-ring" style="width:36px;height:36px;flex-shrink:0;">
+          <svg viewBox="0 0 36 36" fill="none" width="18" height="18">
+            <path d="M18 3 L30 8.5 L30 18 C30 25.5 24.5 30.5 18 34 C11.5 30.5 6 25.5 6 18 L6 8.5 Z" fill="#2e2020" stroke="#5a3d3d" stroke-width="1.2" stroke-linejoin="round"/>
+            <circle cx="18" cy="18" r="8" stroke="var(--gold)" stroke-width="1.2" stroke-dasharray="3, 1.5"/>
+            <circle cx="18" cy="18" r="3.5" fill="var(--cherry)"/>
+          </svg>
+        </div>
+        <div class="hp-wordmark">DRACULA</div>
+      </div>
+
+      <div class="hp-links">
+        <a onclick="showPage('dashboard-page')">DASHBOARD</a>
+        <a onclick="setMode('web');showPage('dashboard-page')">NEW SCAN</a>
+        <a onclick="setMode('web');showPage('dashboard-page')">SECURITY AUDIT</a>
+        <a onclick="document.getElementById('settings-modal').style.display='flex';updateSettingsLabel()">SETTINGS</a>
+      </div>
+
+      <div class="hp-user">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;cursor:pointer;">
+          <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <div class="dsh-avatar-wrap" style="cursor:pointer;" onclick="toggleAcctDropdown()">
+          <div class="dash-avatar" id="home-avatar-initial" style="width:38px;height:38px;font-size:15px;margin:0;"></div>
+          <div class="hp-user-name" id="home-welcome-name">Hello, USER</div>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M6 9l6 6 6-6" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="hp-grid">
+      <div class="hp-left">
+        <div class="hp-console">
+          <div class="hp-console-title">
+            <span class="icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </span>
+            TARGET CONTROL CONSOLE
+          </div>
+          <div class="hp-tabs">
+            <div class="active" id="hp-tab-web" onclick="setHpMode('web')">WEB URL SCANNER</div>
+            <div id="hp-tab-git" onclick="setHpMode('git')">GIT REPO ANALYZER</div>
+          </div>
+          <div class="hp-input-row">
+            <span class="prefix" id="hp-prefix">https://</span>
+            <input type="text" id="hp-target" placeholder="enter target domain ....." autocomplete="off" spellcheck="false" />
+          </div>
+          <div id="hp-opts-git" style="display:none;margin-bottom:16px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:12px;">Analysis Mode</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;align-items:center;gap:12px;cursor:pointer;" onclick="toggleHpChk('hp-chk-build','hp-tgl-build')">
+                <span class="hp-tgl hp-tgl--on" id="hp-tgl-build"></span>
+                <span style="color:#fff;font-size:15px;font-family:'Cormorant Garamond',serif;">Build &amp; Dependency Audit</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;cursor:pointer;" onclick="toggleHpChk('hp-chk-secrets','hp-tgl-secrets')">
+                <span class="hp-tgl hp-tgl--on" id="hp-tgl-secrets"></span>
+                <span style="color:#fff;font-size:15px;font-family:'Cormorant Garamond',serif;">Secret Leakage Scan</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;cursor:pointer;" onclick="toggleHpChk('hp-chk-docker','hp-tgl-docker')">
+                <span class="hp-tgl" id="hp-tgl-docker"></span>
+                <span style="color:#fff;font-size:15px;font-family:'Cormorant Garamond',serif;">Docker Config Review</span>
+              </div>
+            </div>
+          </div>
+          <button class="hp-btn" onclick="setMode(document.getElementById('hp-tab-web').classList.contains('active')?'web':'git');showPage('dashboard-page')">EXECUTE SCAN</button>
+        </div>
+
+        <div class="hp-bottom">
+          <div class="hp-card pink" onclick="document.getElementById('about-modal').style.display='flex'" style="cursor:pointer;">
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:24px 28px;">
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <span style="background:rgba(0,0,0,0.18);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;color:#fff;letter-spacing:0.08em;">AI-POWERED</span>
+                <span style="background:rgba(0,0,0,0.18);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;color:#fff;letter-spacing:0.08em;">AUTONOMOUS</span>
+              </div>
+              <div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.7);font-weight:600;letter-spacing:0.1em;margin-bottom:4px;">LEARN MORE →</div>
+                <h3 style="position:static;font-size:42px;">ABOUT</h3>
+              </div>
+            </div>
+          </div>
+          <div class="hp-card yellow" onclick="document.getElementById('help-modal').style.display='flex'" style="cursor:pointer;">
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:24px 28px;">
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <span style="background:rgba(0,0,0,0.12);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;color:#000;letter-spacing:0.08em;">DOCS</span>
+                <span style="background:rgba(0,0,0,0.12);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;color:#000;letter-spacing:0.08em;">QUICK START</span>
+              </div>
+              <div>
+                <div style="font-size:12px;color:rgba(0,0,0,0.5);font-weight:600;letter-spacing:0.1em;margin-bottom:4px;">GET STARTED →</div>
+                <h3 style="position:static;font-size:42px;color:#000 !important;">HELP</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hp-right">
+        <div id="device-wrapper" class="device-phone-mode">
+          <!-- PHONE FRAME -->
+          <div id="phone-frame" class="hp-phone">
+            <div class="hp-phone-screen">
+              <div class="hp-notch"></div>
+              <iframe id="preview-iframe" src="preview.html" scrolling="no" style="width:100%;height:100%;border:none;border-radius:28px;pointer-events:none;"></iframe>
+            </div>
+          </div>
+          <!-- MAC FRAME -->
+          <div id="mac-frame" style="display:none;flex-direction:column;align-items:center;width:100%;">
+            <div class="mac-body">
+              <div class="mac-topbar">
+                <div class="mac-dot" style="background:#ff5f57;"></div>
+                <div class="mac-dot" style="background:#febc2e;"></div>
+                <div class="mac-dot" style="background:#28c840;"></div>
+                <div class="mac-addressbar" id="mac-addressbar">dracula.ai</div>
+              </div>
+              <div class="mac-screen">
+                <iframe id="preview-iframe-mac" src="preview.html" scrolling="no" style="width:100%;height:100%;border:none;pointer-events:none;"></iframe>
+              </div>
+            </div>
+            <div class="mac-stand"></div>
+            <div class="mac-base"></div>
+          </div>
+        </div>
+        <div class="hp-phone-controls">
+          <button onclick="previewPrev()" title="Previous page">&#8592; PREV</button>
+          <button onclick="previewNext()" title="Next page">NEXT &#8594;</button>
+          <button onclick="switchDevice()" id="switch-btn" title="Switch device">&#8644; SWITCH</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="page" id="dashboard-page">
+
+  <div class="hp-nav">
+    <div class="hp-logo-wrap" onclick="showPage('home-page')">
+      <div class="dsh-logo-ring" style="width:36px;height:36px;flex-shrink:0;">
+        <svg viewBox="0 0 36 36" fill="none" width="18" height="18">
+          <path d="M18 3 L30 8.5 L30 18 C30 25.5 24.5 30.5 18 34 C11.5 30.5 6 25.5 6 18 L6 8.5 Z" fill="#2e2020" stroke="#5a3d3d" stroke-width="1.2" stroke-linejoin="round"/>
+          <circle cx="18" cy="18" r="8" stroke="var(--gold)" stroke-width="1.2" stroke-dasharray="3, 1.5"/>
+          <circle cx="18" cy="18" r="3.5" fill="var(--cherry)"/>
+        </svg>
+      </div>
+      <div class="hp-wordmark">DRACULA</div>
+    </div>
+    <div class="hp-links">
+      <a style="font-weight:800!important;font-size:13px!important;" onclick="showPage('home-page')">HOME</a>
+      <a style="font-weight:800!important;font-size:13px!important;" onclick="setMode('web');showPage('dashboard-page')">NEW SCAN</a>
+      <a style="font-weight:800!important;font-size:13px!important;" onclick="setMode('web');showPage('dashboard-page')">SECURITY AUDIT</a>
+      <a style="font-weight:800!important;font-size:13px!important;" onclick="document.getElementById('settings-modal').style.display='flex';updateSettingsLabel()">SETTINGS</a>
+    </div>
+    <div class="hp-user">
+      <div class="dsh-avatar-wrap" style="cursor:pointer;" onclick="toggleAcctDropdown()">
+        <div class="dash-avatar" id="avatar-initial" style="width:38px;height:38px;font-size:15px;margin:0;"></div>
+        <div class="hp-user-name" id="welcome-name">Hello, Agent</div>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M6 9l6 6 6-6" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="dsh-body-container">
+  <div class="dsh-kpi-row">
+
+    <div class="kpi-module">
+      <div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div>
+      <div class="kpi-icon kpi-icon--cyan">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="kpi-label">Scans Executed</div>
+      <div class="kpi-val" id="kpi-scans">0</div>
+      <div class="kpi-delta kpi-delta--up" id="kpi-scans-delta">+0 this session</div>
+    </div>
+
+    <div class="kpi-module kpi-module--featured">
+      <div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div>
+      <div class="kpi-gauge-wrap">
+        <svg class="kpi-gauge-svg" viewBox="0 0 80 80" width="80" height="80">
+          <circle cx="40" cy="40" r="33" fill="none" stroke="rgba(0,212,255,0.07)" stroke-width="5"/>
+          <circle cx="40" cy="40" r="33" fill="none"
+            stroke="url(#gaugeGrad)"
+            stroke-width="5"
+            stroke-dasharray="207.3"
+            stroke-dashoffset="207.3"
+            stroke-linecap="round"
+            transform="rotate(-90 40 40)"
+            id="gauge-arc"/>
+          <defs>
+            <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"   stop-color="#7b61ff"/>
+              <stop offset="100%" stop-color="#00d4ff"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="kpi-gauge-label">
+          <span class="kpi-gauge-pct" id="gauge-pct">--</span>
+          <span class="kpi-gauge-unit">%</span>
+        </div>
+      </div>
+      <div class="kpi-label" style="margin-top:10px;">Global Security Score</div>
+      <div class="kpi-delta" id="kpi-score-status">Initialising…</div>
+    </div>
+
+    <div class="kpi-module">
+      <div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div>
+      <div class="kpi-icon kpi-icon--purple">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="3" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="13" y="3" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="3" y="13" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M13 17h8M17 13v8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="kpi-label">Active Pipelines</div>
+      <div class="kpi-val" id="kpi-pipes">0</div>
+      <div class="kpi-delta kpi-delta--neutral" id="kpi-pipes-delta">Idle</div>
+    </div>
+
+    <div class="kpi-module">
+      <div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div>
+      <div class="kpi-icon kpi-icon--danger">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          <line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          <line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="kpi-label">Unresolved Vulns</div>
+      <div class="kpi-val kpi-val--danger" id="kpi-vulns">0</div>
+      <div class="kpi-delta kpi-delta--down" id="kpi-vulns-delta">No active findings</div>
+    </div>
+
+  </div><div class="dsh-main-grid">
+
+    <div class="dsh-col dsh-col--left">
+
+      <div class="dsh-panel">
+        <div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div>
+        <div class="dsh-panel-header">
+          <span class="dsh-panel-icon dsh-panel-icon--cyan">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M16.5 16.5l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="dsh-panel-title">Target Control Console</span>
+          <div class="dsh-panel-badges">
+            <span class="dsh-badge dsh-badge--online">READY</span>
+          </div>
+        </div>
+
+        <div class="mode-toggle" id="mode-toggle">
+          <button class="mode-btn mode-btn--active" id="mode-web" onclick="setMode('web')">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+            Web URL Core Scanner
+          </button>
+          <button class="mode-btn" id="mode-git" onclick="setMode('git')">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
+              <circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M9 10.5l6-3M9 13.5l6 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            GitHub Repo Analyzer
+          </button>
+        </div>
+
+        <div class="target-input-wrap">
+          <div class="target-input-prefix" id="target-prefix">https://</div>
+          <input
+            class="target-input"
+            id="target-input"
+            type="text"
+            placeholder="enter target domain…"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <div class="target-input-corner tl"></div>
+          <div class="target-input-corner tr"></div>
+          <div class="target-input-corner bl"></div>
+          <div class="target-input-corner br"></div>
+        </div>
+
+        <div class="target-options" id="target-options-web">
+          <div class="target-opt-label">Crawl Depth</div>
+          <div class="depth-selector">
+            <button class="depth-btn depth-btn--active" onclick="setDepth(1,this)">1</button>
+            <button class="depth-btn" onclick="setDepth(2,this)">2</button>
+            <button class="depth-btn" onclick="setDepth(3,this)">3</button>
+          </div>
+          <div class="target-opt-toggles">
+            <label class="tgl-row"><input type="checkbox" id="chk-a11y" checked/><span class="tgl-switch"></span><span class="tgl-label">Accessibility</span></label>
+            <label class="tgl-row"><input type="checkbox" id="chk-sec" checked/><span class="tgl-switch"></span><span class="tgl-label">Security</span></label>
+            <label class="tgl-row"><input type="checkbox" id="chk-ui"/><span class="tgl-switch"></span><span class="tgl-label">UI Regression</span></label>
+          </div>
+        </div>
+
+        <div class="target-options" id="target-options-git" style="display:none;">
+          <div class="target-opt-label">Analysis Mode</div>
+          <div class="target-opt-toggles">
+            <label class="tgl-row"><input type="checkbox" id="chk-build" checked/><span class="tgl-switch"></span><span class="tgl-label">Build &amp; Dependency Audit</span></label>
+            <label class="tgl-row"><input type="checkbox" id="chk-secrets" checked/><span class="tgl-switch"></span><span class="tgl-label">Secret Leakage Scan</span></label>
+            <label class="tgl-row"><input type="checkbox" id="chk-docker"/><span class="tgl-switch"></span><span class="tgl-label">Docker Config Review</span></label>
+          </div>
+        </div>
+
+        <button class="btn-execute" id="btn-execute" onclick="executeScan()">
+          <span class="btn-execute-pulse"></span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 3l14 9-14 9V3z"/>
+          </svg>
+          <span id="btn-execute-label">EXECUTE SCAN</span>
+        </button>
+      </div>
+      <div class="dsh-panel dsh-panel--terminal">
+        <div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div>
+        <div class="dsh-panel-header">
+          <span class="dsh-panel-icon dsh-panel-icon--green">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M7 8l4 4-4 4M13 16h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="dsh-panel-title">Live Scan Console</span>
+          <div class="dsh-panel-badges" style="margin-left:auto;gap:10px;display:flex;align-items:center;">
+            <span class="term-blink-indicator" id="term-blink">
+              <span class="status-dot" style="width:5px;height:5px;"></span>
+              <span id="term-status-label">IDLE</span>
+            </span>
+            <button class="term-clear-btn" onclick="clearTerminal()">CLR</button>
+          </div>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+          <div class="term-line term-line--comment">── DRACULA ENGINE v2.4.1 ─ Headless Chromium 131 ─ Playwright v1.49 ──</div>
+          <div class="term-line term-line--info">System ready. Awaiting target input.</div>
+          <div class="term-cursor-line"><span class="term-prompt">dracula@core:~$</span> <span class="term-cursor">▋</span></div>
+        </div>
+      </div>
+      </div><div class="dsh-col dsh-col--right">
+      <div class="dsh-panel dsh-panel--findings" style="height:100%;">
+        <div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div>
+        <div class="dsh-panel-header">
+          <span class="dsh-panel-icon dsh-panel-icon--purple">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M14 2v6h6M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="dsh-panel-title">Recent Findings</span>
+          <div class="dsh-panel-badges" style="margin-left:auto;">
+            <span class="dsh-badge" id="findings-count-badge">0 REPORTS</span>
+          </div>
+        </div>
+
+        <div class="findings-list" id="findings-list">
+          <div class="findings-empty" id="findings-empty">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" opacity="0.18">
+              <circle cx="11" cy="11" r="7" stroke="white" stroke-width="1.4"/>
+              <path d="M16.5 16.5l3.5 3.5" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <p>No scans completed yet.<br/>Execute a scan to populate findings.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div></div></div><div id="google-modal" style="display:none; position:fixed; inset:0; z-index:100; align-items:center; justify-content:center;">
+
+    <div id="gm-backdrop" onclick="closeGoogleModal()" style="position:absolute;inset:0;background:rgba(60,47,47,0.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);"></div>
+
+    <div id="gm-box" style="position:relative;z-index:1;background:var(--surface-hi);border-radius:4px;width:370px;box-shadow:0 0 0 1px var(--border),0 16px 48px rgba(0,0,0,0.2),0 0 32px var(--border);overflow:hidden;animation:gmIn .38s cubic-bezier(.16,1,.3,1) forwards;font-family:'Cormorant Garamond',Georgia,serif;">
+
+      <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(196,93,133,0.5) 30%,rgba(212,163,115,0.5) 60%,transparent);"></div>
+
+      <div style="padding:32px 32px 0; text-align:center;">
+        <svg width="32" height="32" viewBox="0 0 24 24" style="margin-bottom:16px;" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285f4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34a853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#fbbc05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#ea4335"/>
+        </svg>
+        <div style="margin-bottom:5px;">
+          <span style="font-size:24px;letter-spacing:-0.5px;font-weight:400;color:var(--text);font-family:Playfair Display,Georgia,serif;">
+            <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
+          </span>
+        </div>
+        <p style="font-size:16px;color:var(--text);font-weight:400;margin-bottom:5px;">Sign in</p>
+        <p style="font-size:13px;color:var(--text-light);font-weight:300;margin-bottom:26px;">to continue to DRACULA</p>
+      </div>
+
+      <div id="gm-accounts" style="padding:0 10px 10px;">
+
+        <div class="g-account" onclick="selectGoogleAccount('Narendra Modi','narendra.modi@gmail.com','NM')"
+             style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:2px;cursor:pointer;transition:background .15s;margin-bottom:2px;">
+          <img src="https://i1-e.pinimg.com/736x/94/91/b5/9491b525931aa28f9a2d4322f23987dc.jpg"
+               alt="NM"
+               style="width:42px;height:42px;border-radius:50%;flex-shrink:0;object-fit:cover;box-shadow:0 2px 12px rgba(66,133,244,0.22);border:1.5px solid rgba(66,133,244,0.35);"/>
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:14.5px;color:var(--text);font-weight:500;">Narendra Modi</div>
+            <div style="font-size:12px;color:var(--text-mid);font-weight:400;margin-top:2px;">narendra.modi@gmail.com</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-mid)" stroke-width="1.8" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+
+        <div class="g-account" onclick="selectGoogleAccount('Giorgia Meloni','giorgia.meloni@gmail.com','GM')"
+             style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:2px;cursor:pointer;transition:background .15s;margin-bottom:2px;">
+          <img src="https://i1-e.pinimg.com/1200x/a5/fd/f9/a5fdf9b61fedfcc07fa16f8aecc240ee.jpg"
+               alt="GM"
+               style="width:42px;height:42px;border-radius:50%;flex-shrink:0;object-fit:cover;box-shadow:0 2px 12px rgba(234,67,53,0.22);border:1.5px solid rgba(234,67,53,0.35);"/>
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:14.5px;color:var(--text);font-weight:500;">Giorgia Meloni</div>
+            <div style="font-size:12px;color:var(--text-mid);font-weight:400;margin-top:2px;">giorgia.meloni@gmail.com</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-mid)" stroke-width="1.8" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+
+        <div onclick="showGoogleEmailInput()"
+             class="g-account"
+             style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:2px;cursor:pointer;transition:background .15s;margin-bottom:2px;">
+          <div style="width:42px;height:42px;border-radius:50%;flex-shrink:0;background:rgba(184,78,120,0.07);border:1.5px solid rgba(184,78,120,0.18);display:flex;align-items:center;justify-content:center;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-mid)" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+          <div style="font-size:14.5px;color:var(--text);font-weight:500;">Use another account</div>
+        </div>
+
+      </div>
+
+      <div id="gm-email-form" style="display:none; padding:0 22px 22px;">
+        <div style="border-top:1px solid rgba(184,78,120,0.12);padding-top:20px;margin-bottom:16px;"></div>
+        <label style="font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-mid);font-family:'Playfair Display',sans-serif;font-weight:700;display:block;margin-bottom:8px;">Email or phone</label>
+        <input id="gm-custom-email" type="email" placeholder="Enter your Google email"
+               style="width:100%;padding:11px 14px;background:var(--surface);border:1px solid var(--border);border-bottom:1.5px solid rgba(66,133,244,0.55);font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;font-weight:400;color:var(--text);outline:none;transition:border .2s;border-radius:0;"
+               onfocus="this.style.borderBottomColor='#1a73e8';this.style.background='var(--surface-hi)'"
+               onblur="this.style.borderBottomColor='rgba(66,133,244,0.55)';this.style.background='var(--surface)'"/>
+        <button onclick="submitCustomGoogle()"
+                style="margin-top:14px;width:100%;padding:12px;background:linear-gradient(135deg,#4285F4,#1a73e8);color:#fff;border:none;border-radius:0;font-family:'Playfair Display',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;cursor:pointer;box-shadow:0 4px 20px rgba(66,133,244,0.28);transition:filter .15s,transform .15s;"
+                onmouseover="this.style.filter='brightness(1.08)';this.style.transform='translateY(-1px)'" onmouseout="this.style.filter='none';this.style.transform='none'">Next</button>
+      </div>
+
+      <div style="padding:14px 22px 22px;border-top:1px solid rgba(184,78,120,0.10);display:flex;justify-content:space-between;align-items:center;">
+        <div style="display:flex;gap:18px;">
+          <a href="#" onclick="return false" style="font-size:11.5px;color:#1a73e8;text-decoration:none;font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;">Help</a>
+          <a href="#" onclick="return false" style="font-size:11.5px;color:#1a73e8;text-decoration:none;font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;">Privacy</a>
+          <a href="#" onclick="return false" style="font-size:11.5px;color:#1a73e8;text-decoration:none;font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;">Terms</a>
+        </div>
+        <button onclick="closeGoogleModal()"
+                style="padding:7px 18px;background:transparent;border:1px solid rgba(184,78,120,0.18);font-family:'Playfair Display',Georgia,serif;font-size:11px;font-weight:600;letter-spacing:0.1em;color:var(--text-mid);cursor:pointer;transition:all .18s;border-radius:0;"
+                onmouseover="this.style.borderColor='rgba(184,78,120,0.40)';this.style.color='var(--cherry)';this.style.background='rgba(184,78,120,0.04)'"
+                onmouseout="this.style.borderColor='rgba(184,78,120,0.18)';this.style.color='var(--text-mid)';this.style.background='transparent'">Cancel</button>
+      </div>
+
+      <div id="gm-loading" style="display:none;position:absolute;inset:0;z-index:2;background:var(--surface-hi);align-items:center;justify-content:center;flex-direction:column;gap:18px;backdrop-filter:blur(8px);">
+        <div style="text-align:center;">
+          <div id="gm-spinner" style="width:44px;height:44px;border-radius:50%;border:2px solid rgba(184,78,120,0.08);border-top-color:var(--cherry);border-right-color:rgba(184,78,120,0.35);animation:spin .8s linear infinite;margin:0 auto 18px;box-shadow:0 0 18px rgba(184,78,120,0.14);"></div>
+          <div style="font-size:15px;color:var(--text);font-weight:500;font-family:'Cormorant Garamond',Georgia,serif;">Signing you in…</div>
+          <div id="gm-loading-email" style="font-size:12px;color:var(--text-mid);margin-top:6px;font-weight:400;font-family:'Cormorant Garamond',Georgia,serif;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
